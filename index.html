@@ -8,11 +8,10 @@
         :root {
             --bg-main: #ffffff;
             --bg-card: #ffffff;
-            --text-main: #111111;
-            --text-muted: #555555;
+            --text-main: #222222; /* Lehká černá pro lepší čitelnost */
+            --text-muted: #666666;
             --accent-yellow: #ffb703;
-            --accent-orange: #fb8500;
-            --dark-black: #000000;
+            --light-black: #1a1a1a; /* Zjemněná černá pro hlavičku a patičku */
         }
         * {
             margin: 0;
@@ -26,13 +25,13 @@
             line-height: 1.6;
         }
         header {
-            background-color: var(--dark-black);
-            padding: 1rem 0;
+            background-color: var(--light-black);
+            padding: 10px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid var(--accent-orange);
+            border-bottom: 3px solid var(--accent-yellow);
         }
         nav {
             display: flex;
@@ -42,21 +41,19 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--accent-yellow);
-            text-decoration: none;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .logo-img {
+            height: 60px; /* Výška loga v hlavičce */
+            width: auto;
+            transition: transform 0.3s ease;
         }
-        .logo span {
-            color: var(--accent-orange);
+        .logo-img:hover {
+            transform: scale(1.05);
         }
         .nav-links {
             list-style: none;
             display: flex;
             gap: 20px;
+            align-items: center;
         }
         .nav-links a {
             color: #ffffff;
@@ -72,7 +69,7 @@
         }
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -88,9 +85,6 @@
             letter-spacing: 2px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        .hero h1 span {
-            color: var(--accent-orange);
-        }
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
@@ -99,8 +93,8 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         .btn {
-            background-color: var(--accent-orange);
-            color: var(--dark-black);
+            background-color: var(--accent-yellow);
+            color: var(--light-black);
             padding: 15px 35px;
             text-decoration: none;
             border-radius: 3px;
@@ -113,9 +107,10 @@
             display: inline-block;
         }
         .btn:hover {
-            background-color: var(--accent-yellow);
+            background-color: #ffffff;
+            color: var(--light-black);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(251, 133, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 183, 3, 0.4);
         }
         section {
             padding: 120px 20px 40px;
@@ -126,7 +121,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: var(--dark-black);
+            color: var(--light-black);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -135,7 +130,7 @@
             display: block;
             width: 60px;
             height: 4px;
-            background: var(--accent-orange);
+            background: var(--accent-yellow);
             margin: 15px auto 0;
         }
         .content-box {
@@ -144,9 +139,9 @@
             border-radius: 5px;
             text-align: center;
             margin-bottom: 40px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #eeeeee;
             border-top: 4px solid var(--accent-yellow);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
         }
         .cards {
             display: grid;
@@ -159,14 +154,14 @@
             overflow: hidden;
             transition: all 0.3s;
             cursor: pointer;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #eeeeee;
             border-bottom: 4px solid transparent;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
         }
         .card:hover {
             transform: translateY(-10px);
-            border-bottom: 4px solid var(--accent-orange);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--accent-yellow);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .card-img {
             height: 220px;
@@ -178,7 +173,7 @@
             padding: 25px;
         }
         .card-content h3 {
-            color: var(--dark-black);
+            color: var(--light-black);
             margin-bottom: 15px;
             font-size: 1.4rem;
         }
@@ -188,8 +183,8 @@
         }
         .card-btn {
             background: transparent;
-            color: var(--accent-orange);
-            border: 2px solid var(--accent-orange);
+            color: var(--light-black);
+            border: 2px solid var(--accent-yellow);
             padding: 10px 20px;
             border-radius: 3px;
             cursor: pointer;
@@ -200,58 +195,107 @@
             letter-spacing: 1px;
         }
         .card:hover .card-btn {
-            background: var(--accent-orange);
-            color: var(--dark-black);
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .contact-item {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-            border-top: 4px solid var(--dark-black);
-        }
-        .contact-item h3 {
-            margin-bottom: 10px;
-            color: var(--dark-black);
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-        .contact-item p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-        .contact-item a {
-            color: var(--accent-orange);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .contact-item a:hover {
-            color: var(--accent-yellow);
-        }
-        footer {
-            background-color: var(--dark-black);
-            color: #888888;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-            border-top: 3px solid var(--accent-yellow);
+            background: var(--accent-yellow);
+            color: var(--light-black);
         }
 
-        /* Modal Okna vylepseni */
+        /* --- NOVÁ FB SEKCE --- */
+        .social-presentation {
+            text-align: center;
+            padding: 60px 20px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .social-presentation::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--accent-yellow);
+        }
+        .social-presentation p {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Animace šipky */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+        .animated-arrow {
+            font-size: 3rem;
+            color: var(--accent-yellow);
+            animation: bounce 2s infinite;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Animace FB tlačítka (pulzování) */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 183, 3, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 183, 3, 0); }
+        }
+        .fb-hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--accent-yellow);
+            color: var(--light-black);
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            animation: pulse 2.5s infinite;
+        }
+        .fb-hero-btn:hover {
+            background-color: var(--light-black);
+            color: var(--accent-yellow);
+            animation: none;
+            transform: translateY(-3px);
+        }
+        .fb-hero-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        footer {
+            background-color: var(--light-black);
+            color: #888888;
+            text-align: center;
+            padding: 50px 20px 30px;
+            border-top: 3px solid var(--accent-yellow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-logo {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        /* Modal Okna */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(26, 26, 26, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -274,7 +318,7 @@
             position: relative;
             transform: translateY(20px);
             transition: all 0.3s ease;
-            border-top: 5px solid var(--accent-orange);
+            border-top: 5px solid var(--accent-yellow);
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             max-height: 90vh;
             overflow-y: auto;
@@ -287,21 +331,21 @@
             top: 15px;
             right: 20px;
             font-size: 2.2rem;
-            color: var(--dark-black);
+            color: var(--light-black);
             cursor: pointer;
             z-index: 10;
             transition: color 0.3s;
             font-weight: bold;
         }
         .modal-close:hover {
-            color: var(--accent-orange);
+            color: var(--accent-yellow);
         }
         .modal-body {
             padding: 50px 40px;
             text-align: center;
         }
         .modal-body h3 {
-            color: var(--dark-black);
+            color: var(--light-black);
             font-size: 2.2rem;
             margin-bottom: 20px;
             text-transform: uppercase;
@@ -328,103 +372,66 @@
             border-radius: 3px;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eeeeee;
             transition: transform 0.3s;
         }
         .modal-gallery-img:hover {
             transform: scale(1.02);
-            border-color: var(--accent-orange);
+            border-color: var(--accent-yellow);
         }
 
         html {
             scroll-behavior: smooth;
         }
 
-        /* --- RESPONSIVNÍ DESIGN (Mobil a Tablet) --- */
+        /* --- RESPONSIVNÍ DESIGN --- */
         @media (max-width: 900px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .cards, .contact-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
+            .hero h1 { font-size: 3rem; }
+            .cards { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         }
-
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
                 gap: 15px;
-                padding: 15px;
+                padding: 10px;
             }
-            header {
-                padding: 10px 0;
-            }
-            section {
-                padding: 140px 15px 40px; /* Větší horní padding kvůli dvouřádkovému menu */
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-                padding: 0 10px;
-            }
-            .modal-body {
-                padding: 30px 20px;
-            }
-            .modal-gallery {
-                grid-template-columns: 1fr; /* Obrázky v modalu pod sebou */
-                gap: 15px;
-            }
-            .modal-body h3 {
-                font-size: 1.8rem;
-                margin-top: 10px;
-            }
-            h2 {
-                font-size: 2rem;
-            }
+            .logo-img { height: 50px; }
+            section { padding: 160px 15px 40px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; padding: 0 10px; }
+            .modal-body { padding: 30px 20px; }
+            .modal-gallery { grid-template-columns: 1fr; gap: 15px; }
+            .modal-body h3 { font-size: 1.8rem; margin-top: 10px; }
+            h2 { font-size: 2rem; }
         }
-
         @media (max-width: 480px) {
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-            .nav-links a {
-                font-size: 0.8rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .content-box {
-                padding: 25px 15px;
-            }
-            .cards {
-                grid-template-columns: 1fr; /* Karty plně pod sebou na malém mobilu */
-            }
-            .card-img {
-                height: 180px;
-            }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .hero h1 { font-size: 2rem; }
+            .content-box { padding: 25px 15px; }
+            .cards { grid-template-columns: 1fr; }
+            .fb-hero-btn { font-size: 1.1rem; padding: 15px 25px; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="#" class="logo">Safra-<span>Go</span>.cz</a>
+            <!-- Logo v hlavičce -->
+            <a href="#">
+                <img src="IMG_0242.png" alt="Safra-Go Logo" class="logo-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="#kdo-jsme">Kdo jsme</a></li>
                 <li><a href="#co-delame">Co děláme</a></li>
-                <li><a href="#cesty">Ukázkové cesty</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#cesty">Naše cesty</a></li>
+                <li><a href="#sledujte-nas">Aktuality na FB</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>Safra-<span>Go</span>.cz</h1>
+        <h1>Safra-Go.cz</h1>
         <p>Volný čas je asi to nejdražší, co máte. Investujte ho zodpovědně a objevujte krásy planety po svém.</p>
         <a href="#cesty" class="btn">Prozkoumat cesty</a>
     </div>
@@ -446,7 +453,6 @@
     <section id="cesty">
         <h2>Ukázkové cesty</h2>
         <div class="cards">
-            <!-- Karta 1 -->
             <div class="card" onclick="openModal('modal-1')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
@@ -455,7 +461,6 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <!-- Karta 2 -->
             <div class="card" onclick="openModal('modal-2')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
@@ -464,7 +469,6 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <!-- Karta 3 -->
             <div class="card" onclick="openModal('modal-3')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
@@ -476,104 +480,89 @@
         </div>
     </section>
 
-    <section id="kontakt">
-        <h2>Kontaktujte nás</h2>
-        <div class="contact-grid">
-            <div class="contact-item">
-                <h3>Napište nám</h3>
-                <p><a href="mailto:info@safra-go.cz">info@safra-go.cz</a></p>
-            </div>
-            <div class="contact-item">
-                <h3>Kde nás najdete</h3>
-                <p>Safra-Go.cz</p>
-                <p>Česká republika</p>
-            </div>
-            <div class="contact-item">
-                <h3>Sledujte nás</h3>
-                <p>Brzy spustíme sociální sítě</p>
-            </div>
+    <!-- NOVÁ SEKCE PREZENTACE NA SOCIÁLNÍCH SÍTÍCH -->
+    <section id="sledujte-nas">
+        <h2>Jsme online!</h2>
+        <div class="social-presentation">
+            <p>Tento web slouží jako portfolio našich vizí a toho, co dokážeme. Nechceme vás zdržovat formuláři. <strong>Veškeré aktuality, termíny expedic, nové fotky a přímý kontakt s námi probíhá tam, kde to žije.</strong></p>
+            
+            <div class="animated-arrow">↓</div><br>
+            
+            <a href="https://www.facebook.com/share/1ELeic3on6/?mibextid=wwXIfr" target="_blank" class="fb-hero-btn">
+                <svg viewBox="0 0 320 512"><!-- Font Awesome FB Icon -->
+                    <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                </svg>
+                Koukněte na náš Facebook
+            </a>
         </div>
     </section>
 
     <footer>
+        <!-- Logo v patičce -->
+        <img src="IMG_0242.png" alt="Safra-Go Logo Patička" class="footer-logo">
         <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
     </footer>
 
-    <!-- MODALNÍ OKNA -->
-    <!-- Modal 1 -->
+    <!-- MODALNÍ OKNA (1, 2, 3) -->
     <div id="modal-1" class="modal-overlay" onclick="closeModal(event, 'modal-1')">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModalForce('modal-1')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Afrika</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace, perfektní zázemí a autentický zážitek, který jen tak někde nenajdete.</p>
-                
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
                 <div class="modal-gallery">
-                    <!-- ZDE VLOŽTE ODKAZY NA VLASTNÍ OBRÁZKY DO url('') -->
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
-                
-                <a href="#kontakt" class="btn" onclick="closeModalForce('modal-1')">Chci zjistit více</a>
+                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-1')">Aktuality na Facebooku</a>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2 -->
     <div id="modal-2" class="modal-overlay" onclick="closeModal(event, 'modal-2')">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModalForce('modal-2')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Kamčatka</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup a detailní znalost lokality nám umožňují tvořit bezpečné cesty i tam, kam se jiní neodváží.</p>
-                
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup nám umožňuje tvořit bezpečné cesty.</p>
                 <div class="modal-gallery">
-                    <!-- ZDE VLOŽTE ODKAZY NA VLASTNÍ OBRÁZKY DO url('') -->
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1534151778216-3e0c0df4e2a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
-                
-                <a href="#kontakt" class="btn" onclick="closeModalForce('modal-2')">Chci zjistit více</a>
+                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-2')">Aktuality na Facebooku</a>
             </div>
         </div>
     </div>
 
-    <!-- Modal 3 -->
     <div id="modal-3" class="modal-overlay" onclick="closeModal(event, 'modal-3')">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModalForce('modal-3')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Portugalsko</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, obohacené o to nejlepší z místní kultury a gastronomie. Cesta, která je vyladěná do posledního detailu a vy si můžete užívat každý kilometr.</p>
-                
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, obohacené o to nejlepší z místní kultury a gastronomie. Vyladěno do posledního detailu.</p>
                 <div class="modal-gallery">
-                    <!-- ZDE VLOŽTE ODKAZY NA VLASTNÍ OBRÁZKY DO url('') -->
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1522069213448-443a614a8b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
-                
-                <a href="#kontakt" class="btn" onclick="closeModalForce('modal-3')">Chci zjistit více</a>
+                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-3')">Aktuality na Facebooku</a>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript pro ovládání modálních oken -->
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal(event, modalId) {
             if (event.target.id === modalId) {
                 document.getElementById(modalId).classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         }
-
         function closeModalForce(modalId) {
             document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
