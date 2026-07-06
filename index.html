@@ -6,10 +6,12 @@
     <title>Safra-Go.cz | Dobrodružství a poznávání</title>
     <style>
         :root {
-            --primary: #2C3E50;
-            --accent: #E67E22;
-            --light: #F9F9F9;
-            --dark: #333333;
+            --bg-main: #0d0d0d;
+            --bg-card: #1a1a1a;
+            --text-main: #f5f5f5;
+            --text-muted: #aaaaaa;
+            --accent: #ffb703; /* Teplá africká žluto-oranžová */
+            --accent-hover: #fb8500;
         }
         * {
             margin: 0;
@@ -18,18 +20,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.6;
         }
         header {
-            background-color: var(--primary);
-            color: white;
+            background-color: rgba(13, 13, 13, 0.95);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid #333;
         }
         nav {
             display: flex;
@@ -41,9 +43,11 @@
         }
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 900;
             color: var(--accent);
             text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         .nav-links {
             list-style: none;
@@ -51,45 +55,59 @@
             gap: 20px;
         }
         .nav-links a {
-            color: white;
+            color: var(--text-main);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
         .nav-links a:hover {
             color: var(--accent);
         }
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            /* Africký motiv savany/západu slunce */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
             padding: 0 20px;
         }
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            color: #ddd;
         }
         .btn {
             background-color: var(--accent);
-            color: white;
-            padding: 12px 30px;
+            color: #000;
+            padding: 15px 35px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 3px;
             font-weight: bold;
-            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
         }
         .btn:hover {
-            background-color: #d35400;
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 183, 3, 0.3);
         }
         section {
             padding: 100px 20px 40px;
@@ -100,23 +118,25 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: var(--primary);
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         h2::after {
             content: '';
             display: block;
-            width: 80px;
+            width: 60px;
             height: 4px;
             background: var(--accent);
-            margin: 10px auto 0;
+            margin: 15px auto 0;
         }
         .content-box {
-            background: white;
+            background: var(--bg-card);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 5px;
             text-align: center;
             margin-bottom: 40px;
+            border-left: 4px solid var(--accent);
         }
         .cards {
             display: grid;
@@ -124,18 +144,20 @@
             gap: 30px;
         }
         .card {
-            background: white;
-            border-radius: 10px;
+            background: var(--bg-card);
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
         }
         .card:hover {
             transform: translateY(-10px);
+            border-bottom: 3px solid var(--accent);
         }
         .card-img {
-            height: 200px;
-            background-color: #ddd;
+            height: 220px;
+            background-color: #333;
             background-size: cover;
             background-position: center;
         }
@@ -143,16 +165,117 @@
             padding: 25px;
         }
         .card-content h3 {
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .card-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .card-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 8px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            width: 100%;
+        }
+        .card:hover .card-btn {
+            background: var(--accent);
+            color: #000;
         }
         footer {
-            background-color: var(--primary);
-            color: white;
+            background-color: #000;
+            color: var(--text-muted);
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             margin-top: 50px;
+            border-top: 1px solid #222;
         }
+
+        /* Modal Okna */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: var(--bg-card);
+            width: 90%;
+            max-width: 800px;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-main);
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: var(--accent);
+        }
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .modal-img {
+            flex: 1 1 300px;
+            min-height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        .modal-info {
+            flex: 2 1 300px;
+            padding: 40px;
+        }
+        .modal-info h3 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .modal-info ul {
+            margin: 20px 0;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+        .modal-info li {
+            margin-bottom: 10px;
+        }
+        .modal-info strong {
+            color: var(--text-main);
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -186,32 +309,38 @@
     <section id="co-delame">
         <h2>Co děláme</h2>
         <div class="content-box">
-            <p>Zprostředkováváme zážitky, pohyb a výjimečnost. Pomůžeme vám naplánovat expedice od A do Z tak, abyste se mohli soustředit jen na to podstatné – na samotný zážitek. Ať už jde o MTB expedice do vzdálených koutů planety nebo pohodové kulinářské cesty, společně najdeme to pravé dobrodružství přesně na míru. Připravujeme pro vás plně bezúdržbové cesty bez stresu.</p>
+            <p>Zprostředkováváme zážitky, pohyb a výjimečnost. Pomůžeme vám naplánovat expedice od A do Z tak, abyste se mohli soustředit jen na to podstatné – na samotný zážitek. Ať už jde o MTB expedice do vzdálených koutů planety nebo pohodové kulinářské cesty, společně najdeme to pravé dobrodružství přesně na míru. Připravujeme pro vás plně zajištěné cesty, kde nemusíte řešit žádné starosti navíc.</p>
         </div>
     </section>
 
     <section id="cesty">
-        <h2>Ukázkové bezúdržbové cesty</h2>
+        <h2>Ukázkové cesty</h2>
         <div class="cards">
-            <div class="card">
+            <!-- Karta 1 -->
+            <div class="card" onclick="openModal('modal-afrika')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
                     <h3>MTB Afrika 2025</h3>
-                    <p>Vydejte se s námi do jižní Afriky. Poznejte nejvyšší pohoří - Dračí hory ze sedla svého kola. Perfektně připravená trasa bez starostí.</p>
+                    <p>Vydejte se s námi do jižní Afriky. Poznejte nejvyšší pohoří ze sedla svého kola v perfektně zorganizovaném prostředí.</p>
+                    <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <div class="card">
+            <!-- Karta 2 -->
+            <div class="card" onclick="openModal('modal-kamcatka')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
                     <h3>MTB Kamčatka</h3>
-                    <p>Nespoutaná příroda, medvědi a úchvatné vulkány. Extrémní prostředí, ve kterém se díky naší organizaci nemusíte o nic starat a jen šlapat.</p>
+                    <p>Nespoutaná příroda, medvědi a úchvatné vulkány. Extrémní prostředí s prémiovým servisem v zádech.</p>
+                    <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <div class="card">
+            <!-- Karta 3 -->
+            <div class="card" onclick="openModal('modal-portugalsko')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
                     <h3>Gastro-Tour Portugalsko</h3>
-                    <p>Pro milovníky dobrého jídla a vína. Pohodová, kompletně bezúdržbová cesta plná těch nejlepších chutí, které Pyrenejský poloostrov nabízí.</p>
+                    <p>Pro milovníky dobrého jídla a vína. Promyšlená a kompletně zajištěná cesta plná těch nejlepších chutí a zážitků.</p>
+                    <button class="card-btn">Více informací</button>
                 </div>
             </div>
         </div>
@@ -220,5 +349,89 @@
     <footer>
         <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
     </footer>
+
+    <!-- MODALNÍ OKNA -->
+    <div id="modal-afrika" class="modal-overlay" onclick="closeModal(event, 'modal-afrika')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModalForce('modal-afrika')">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="modal-info">
+                    <h3>MTB Afrika 2025</h3>
+                    <p>Epická dvoutýdenní výprava napříč Dračími horami. Připravili jsme trasu, která otestuje vaše dovednosti, ale zároveň nabídne dechberoucí výhledy na divokou africkou přírodu.</p>
+                    <ul>
+                        <li><strong>Náročnost:</strong> Vysoká</li>
+                        <li><strong>Délka:</strong> 14 dní</li>
+                        <li><strong>Ubytování:</strong> Prémiové lodge a kempy</li>
+                        <li><strong>Zajištění:</strong> Lokální průvodce, doprovodné vozidlo, mechanik</li>
+                    </ul>
+                    <a href="mailto:info@safra-go.cz" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Mám zájem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-kamcatka" class="modal-overlay" onclick="closeModal(event, 'modal-kamcatka')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModalForce('modal-kamcatka')">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="modal-info">
+                    <h3>MTB Kamčatka</h3>
+                    <p>Vydejte se tam, kam se běžný turista nepodívá. Sjezdy z vulkánů, překračování divokých řek a naprostá izolace od civilizace – ovšem s jistotou naší dokonalé logistiky.</p>
+                    <ul>
+                        <li><strong>Náročnost:</strong> Extrémní</li>
+                        <li><strong>Délka:</strong> 18 dní</li>
+                        <li><strong>Specifikum:</strong> Podpora vrtulníku pro přesuny</li>
+                        <li><strong>Zajištění:</strong> Satelitní spojení, profesionální ochrana proti medvědům</li>
+                    </ul>
+                    <a href="mailto:info@safra-go.cz" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Mám zájem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-portugalsko" class="modal-overlay" onclick="closeModal(event, 'modal-portugalsko')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModalForce('modal-portugalsko')">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="modal-info">
+                    <h3>Gastro-Tour Portugalsko</h3>
+                    <p>Kombinace lehké cyklistiky podél pobřeží a objevování těch nejlepších vinařství. Cesta navržená tak, abyste si užili každý kilometr i každé sousto.</p>
+                    <ul>
+                        <li><strong>Náročnost:</strong> Nízká</li>
+                        <li><strong>Délka:</strong> 7 dní</li>
+                        <li><strong>Zážitek:</strong> Ochutnávky vín a lokální gastronomie</li>
+                        <li><strong>Zajištění:</strong> Převoz zavazadel mezi hotely, rezervace v top restauracích</li>
+                    </ul>
+                    <a href="mailto:info@safra-go.cz" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Mám zájem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript pro ovládání modálních oken -->
+    <script>
+        // Otevření modálu
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Zabrání scrollování stránky pod oknem
+        }
+
+        // Zavření modálu při kliknutí mimo obsah (na overlay)
+        function closeModal(event, modalId) {
+            if (event.target.id === modalId) {
+                document.getElementById(modalId).classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Zavření modálu křížkem
+        function closeModalForce(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>
