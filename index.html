@@ -118,7 +118,7 @@
             box-shadow: 0 5px 15px rgba(251, 133, 0, 0.4);
         }
         section {
-            padding: 100px 20px 40px;
+            padding: 120px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -244,7 +244,7 @@
             border-top: 3px solid var(--accent-yellow);
         }
 
-        /* Modal Okna */
+        /* Modal Okna vylepseni */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -269,14 +269,15 @@
             background: #ffffff;
             color: var(--text-main);
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             border-radius: 5px;
-            overflow: hidden;
             position: relative;
             transform: translateY(20px);
             transition: all 0.3s ease;
             border-top: 5px solid var(--accent-orange);
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .modal-overlay.active .modal-content {
             transform: translateY(0);
@@ -296,39 +297,116 @@
             color: var(--accent-orange);
         }
         .modal-body {
-            display: flex;
-            flex-wrap: wrap;
+            padding: 50px 40px;
+            text-align: center;
         }
-        .modal-img {
-            flex: 1 1 300px;
-            min-height: 250px;
+        .modal-body h3 {
+            color: var(--dark-black);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .modal-text {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .modal-gallery-img {
+            height: 200px;
+            background-color: #eee;
+            border-radius: 3px;
             background-size: cover;
             background-position: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s;
         }
-        .modal-info {
-            flex: 2 1 300px;
-            padding: 40px;
-        }
-        .modal-info h3 {
-            color: var(--dark-black);
-            font-size: 2rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .modal-info ul {
-            margin: 20px 0;
-            padding-left: 20px;
-            color: var(--text-muted);
-        }
-        .modal-info li {
-            margin-bottom: 10px;
-        }
-        .modal-info strong {
-            color: var(--dark-black);
+        .modal-gallery-img:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-orange);
         }
 
         html {
             scroll-behavior: smooth;
+        }
+
+        /* --- RESPONSIVNÍ DESIGN (Mobil a Tablet) --- */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .cards, .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            header {
+                padding: 10px 0;
+            }
+            section {
+                padding: 140px 15px 40px; /* Větší horní padding kvůli dvouřádkovému menu */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            .modal-body {
+                padding: 30px 20px;
+            }
+            .modal-gallery {
+                grid-template-columns: 1fr; /* Obrázky v modalu pod sebou */
+                gap: 15px;
+            }
+            .modal-body h3 {
+                font-size: 1.8rem;
+                margin-top: 10px;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content-box {
+                padding: 25px 15px;
+            }
+            .cards {
+                grid-template-columns: 1fr; /* Karty plně pod sebou na malém mobilu */
+            }
+            .card-img {
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -368,27 +446,30 @@
     <section id="cesty">
         <h2>Ukázkové cesty</h2>
         <div class="cards">
-            <div class="card" onclick="openModal('modal-afrika')">
+            <!-- Karta 1 -->
+            <div class="card" onclick="openModal('modal-1')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
-                    <h3>MTB Afrika 2025</h3>
-                    <p>Vydejte se s námi do jižní Afriky. Poznejte nejvyšší pohoří ze sedla svého kola v perfektně zorganizovaném prostředí.</p>
+                    <h3>Expedice Afrika</h3>
+                    <p>Máme za sebou několik expedic s horskými koly, trasy různých náročností v dechberoucím prostředí.</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <div class="card" onclick="openModal('modal-kamcatka')">
+            <!-- Karta 2 -->
+            <div class="card" onclick="openModal('modal-2')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
-                    <h3>MTB Kamčatka</h3>
-                    <p>Nespoutaná příroda, medvědi a úchvatné vulkány. Extrémní prostředí s prémiovým servisem v zádech.</p>
+                    <h3>Expedice Kamčatka</h3>
+                    <p>Máme za sebou několik expedic s horskými koly, trasy různých náročností v divoké přírodě.</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <div class="card" onclick="openModal('modal-portugalsko')">
+            <!-- Karta 3 -->
+            <div class="card" onclick="openModal('modal-3')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
-                    <h3>Gastro-Tour Portugalsko</h3>
-                    <p>Pro milovníky dobrého jídla a vína. Promyšlená a kompletně zajištěná cesta plná těch nejlepších chutí a zážitků.</p>
+                    <h3>Expedice Portugalsko</h3>
+                    <p>Máme za sebou několik expedic s horskými koly, trasy různých náročností s prémiovým servisem.</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
@@ -418,66 +499,68 @@
         <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
     </footer>
 
-    <div id="modal-afrika" class="modal-overlay" onclick="closeModal(event, 'modal-afrika')">
+    <!-- MODALNÍ OKNA -->
+    <!-- Modal 1 -->
+    <div id="modal-1" class="modal-overlay" onclick="closeModal(event, 'modal-1')">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModalForce('modal-afrika')">&times;</span>
+            <span class="modal-close" onclick="closeModalForce('modal-1')">&times;</span>
             <div class="modal-body">
-                <div class="modal-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
-                <div class="modal-info">
-                    <h3>MTB Afrika 2025</h3>
-                    <p>Epická dvoutýdenní výprava napříč Dračími horami. Připravili jsme trasu, která otestuje vaše dovednosti, ale zároveň nabídne dechberoucí výhledy na divokou africkou přírodu.</p>
-                    <ul>
-                        <li><strong>Náročnost:</strong> Vysoká</li>
-                        <li><strong>Délka:</strong> 14 dní</li>
-                        <li><strong>Ubytování:</strong> Prémiové lodge a kempy</li>
-                        <li><strong>Zajištění:</strong> Lokální průvodce, doprovodné vozidlo, mechanik</li>
-                    </ul>
-                    <a href="mailto:info@safra-go.cz" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Mám zájem</a>
+                <h3>Expedice Afrika</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace, perfektní zázemí a autentický zážitek, který jen tak někde nenajdete.</p>
+                
+                <div class="modal-gallery">
+                    <!-- ZDE VLOŽTE ODKAZY NA VLASTNÍ OBRÁZKY DO url('') -->
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
+                
+                <a href="#kontakt" class="btn" onclick="closeModalForce('modal-1')">Chci zjistit více</a>
             </div>
         </div>
     </div>
 
-    <div id="modal-kamcatka" class="modal-overlay" onclick="closeModal(event, 'modal-kamcatka')">
+    <!-- Modal 2 -->
+    <div id="modal-2" class="modal-overlay" onclick="closeModal(event, 'modal-2')">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModalForce('modal-kamcatka')">&times;</span>
+            <span class="modal-close" onclick="closeModalForce('modal-2')">&times;</span>
             <div class="modal-body">
-                <div class="modal-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
-                <div class="modal-info">
-                    <h3>MTB Kamčatka</h3>
-                    <p>Vydejte se tam, kam se běžný turista nepodívá. Sjezdy z vulkánů, překračování divokých řek a naprostá izolace od civilizace – ovšem s jistotou naší dokonalé logistiky.</p>
-                    <ul>
-                        <li><strong>Náročnost:</strong> Extrémní</li>
-                        <li><strong>Délka:</strong> 18 dní</li>
-                        <li><strong>Specifikum:</strong> Podpora vrtulníku pro přesuny</li>
-                        <li><strong>Zajištění:</strong> Satelitní spojení, profesionální ochrana proti medvědům</li>
-                    </ul>
-                    <a href="mailto:info@safra-go.cz" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Mám zájem</a>
+                <h3>Expedice Kamčatka</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup a detailní znalost lokality nám umožňují tvořit bezpečné cesty i tam, kam se jiní neodváží.</p>
+                
+                <div class="modal-gallery">
+                    <!-- ZDE VLOŽTE ODKAZY NA VLASTNÍ OBRÁZKY DO url('') -->
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1534151778216-3e0c0df4e2a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
+                
+                <a href="#kontakt" class="btn" onclick="closeModalForce('modal-2')">Chci zjistit více</a>
             </div>
         </div>
     </div>
 
-    <div id="modal-portugalsko" class="modal-overlay" onclick="closeModal(event, 'modal-portugalsko')">
+    <!-- Modal 3 -->
+    <div id="modal-3" class="modal-overlay" onclick="closeModal(event, 'modal-3')">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModalForce('modal-portugalsko')">&times;</span>
+            <span class="modal-close" onclick="closeModalForce('modal-3')">&times;</span>
             <div class="modal-body">
-                <div class="modal-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
-                <div class="modal-info">
-                    <h3>Gastro-Tour Portugalsko</h3>
-                    <p>Kombinace lehké cyklistiky podél pobřeží a objevování těch nejlepších vinařství. Cesta navržená tak, abyste si užili každý kilometr i každé sousto.</p>
-                    <ul>
-                        <li><strong>Náročnost:</strong> Nízká</li>
-                        <li><strong>Délka:</strong> 7 dní</li>
-                        <li><strong>Zážitek:</strong> Ochutnávky vín a lokální gastronomie</li>
-                        <li><strong>Zajištění:</strong> Převoz zavazadel mezi hotely, rezervace v top restauracích</li>
-                    </ul>
-                    <a href="mailto:info@safra-go.cz" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Mám zájem</a>
+                <h3>Expedice Portugalsko</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, obohacené o to nejlepší z místní kultury a gastronomie. Cesta, která je vyladěná do posledního detailu a vy si můžete užívat každý kilometr.</p>
+                
+                <div class="modal-gallery">
+                    <!-- ZDE VLOŽTE ODKAZY NA VLASTNÍ OBRÁZKY DO url('') -->
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1522069213448-443a614a8b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
+                
+                <a href="#kontakt" class="btn" onclick="closeModalForce('modal-3')">Chci zjistit více</a>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript pro ovládání modálních oken -->
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
