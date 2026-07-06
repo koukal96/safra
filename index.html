@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safra-Go.cz | Dobrodružství a poznávání</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --accent: #E67E22;
+            --light: #F9F9F9;
+            --dark: #333333;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #d35400;
+        }
+        section {
+            padding: 100px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 25px;
+        }
+        .card-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Safra-Go.cz</a>
+            <ul class="nav-links">
+                <li><a href="#kdo-jsme">Kdo jsme</a></li>
+                <li><a href="#co-delame">Co děláme</a></li>
+                <li><a href="#cesty">Ukázkové cesty</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Safra-Go.cz</h1>
+        <p>Volný čas je asi to nejdražší, co máte. Investujte ho zodpovědně a objevujte krásy planety po svém.</p>
+        <a href="#cesty" class="btn">Prozkoumat cesty</a>
+    </div>
+
+    <section id="kdo-jsme">
+        <h2>Kdo jsme</h2>
+        <div class="content-box">
+            <p>Jsme nadšenci do dobrodružství, pohybu a poznávání. Nenechte se omezovat katalogovými nabídkami a vydejte se přesně tam, kam chcete, kdy chcete a s kým chcete. Nabízíme unikátní know-how, léta vlastních zkušeností, perfektní zázemí a kontakty po celém světě. Vy jste tvůrci své cesty, my vám pomáháme vaše vize realizovat.</p>
+        </div>
+    </section>
+
+    <section id="co-delame">
+        <h2>Co děláme</h2>
+        <div class="content-box">
+            <p>Zprostředkováváme zážitky, pohyb a výjimečnost. Pomůžeme vám naplánovat expedice od A do Z tak, abyste se mohli soustředit jen na to podstatné – na samotný zážitek. Ať už jde o MTB expedice do vzdálených koutů planety nebo pohodové kulinářské cesty, společně najdeme to pravé dobrodružství přesně na míru. Připravujeme pro vás plně bezúdržbové cesty bez stresu.</p>
+        </div>
+    </section>
+
+    <section id="cesty">
+        <h2>Ukázkové bezúdržbové cesty</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-content">
+                    <h3>MTB Afrika 2025</h3>
+                    <p>Vydejte se s námi do jižní Afriky. Poznejte nejvyšší pohoří - Dračí hory ze sedla svého kola. Perfektně připravená trasa bez starostí.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-content">
+                    <h3>MTB Kamčatka</h3>
+                    <p>Nespoutaná příroda, medvědi a úchvatné vulkány. Extrémní prostředí, ve kterém se díky naší organizaci nemusíte o nic starat a jen šlapat.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-content">
+                    <h3>Gastro-Tour Portugalsko</h3>
+                    <p>Pro milovníky dobrého jídla a vína. Pohodová, kompletně bezúdržbová cesta plná těch nejlepších chutí, které Pyrenejský poloostrov nabízí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
+    </footer>
+</body>
+</html>
