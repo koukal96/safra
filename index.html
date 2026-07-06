@@ -485,6 +485,20 @@
             .cards { grid-template-columns: 1fr; }
             .card-img { height: 200px; }
         }
+                /* Kontakt sekce */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
+        .contact-card { background: #ffffff; padding: 40px 30px; border-radius: 8px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); border-top: 4px solid var(--accent-yellow); }
+        .contact-card h3 { color: var(--accent-dark); font-size: 1.5rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .contact-card p { color: var(--text-muted); margin-bottom: 12px; font-size: 1.05rem; }
+        .contact-card a { color: var(--accent-dark); font-weight: 600; text-decoration: none; transition: color 0.3s; }
+        .contact-card a:hover { color: var(--accent-yellow); }
+        .small-text { font-size: 0.85rem !important; margin-top: 15px; line-height: 1.4; color: #888; }
+        .btn-small { padding: 12px 20px; font-size: 0.85rem; margin-top: 15px; width: 100%; }
+
+        /* Galerie certifikátů v okně */
+        .cert-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 20px; }
+        .cert-img { height: 500px; background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #eeeeee; }
+
     </style>
 </head>
 <body>
@@ -581,6 +595,51 @@
             </div>
         </div>
     </section>
+    <!-- SEKCE KONTAKT A POJIŠTĚNÍ -->
+    <section id="kontakt">
+        <div class="section-inner">
+            <h2>Kontakt</h2>
+            <div class="contact-grid">
+                <!-- Údaje firmy -->
+                <div class="contact-card">
+                    <h3>Safra-go s.r.o.</h3>
+                    <p>Josefa Sousedíka 1160<br>755 01 Vsetín</p>
+                    <p><strong>IČO:</strong> 08118051</p>
+                    <p class="small-text">Společnost zapsaná v obchodním rejstříku, vedeného Krajským soudem v Ostravě oddíl C, vložka 78387.</p>
+                </div>
+                
+                <!-- Spojení -->
+                <div class="contact-card">
+                    <h3>Spojte se s námi</h3>
+                    <p><strong>Telefon:</strong><br><a href="tel:+420604119957">+420 604 119 957</a></p>
+                    <p><strong>E-mail:</strong><br><a href="mailto:info@safra-go.cz">info@safra-go.cz</a></p>
+                </div>
+                
+                <!-- Pojištění -->
+                <div class="contact-card">
+                    <h3>Pojištění proti úpadku</h3>
+                    <p>Zakládáme si na spolehlivosti a bezpečí. Jsme pojištěni proti úpadku u pojišťovny Union poisťovňa.</p>
+                    <button class="btn btn-small" onclick="openModal('modal-certifikaty')">Zobrazit certifikáty</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODÁLNÍ OKNO PRO CERTIFIKÁTY -->
+    <div id="modal-certifikaty" class="modal-overlay" onclick="closeModal(event, 'modal-certifikaty')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-certifikaty')">&times;</span>
+            <div class="modal-body">
+                <h3>Certifikáty</h3>
+                <p class="modal-text">Naše certifikáty o pojištění a zápisu cestovní kanceláře.</p>
+                <div class="cert-gallery">
+                    <div class="cert-img" style="background-image: url('IMG_0245.webp');"></div>
+                    <div class="cert-img" style="background-image: url('IMG_0246.jpeg');"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <img src="IMG_0242.png" alt="Safra-Go Logo Patička" class="footer-logo">
