@@ -6,12 +6,13 @@
     <title>Safra-Go.cz | Dobrodružství a poznávání</title>
     <style>
         :root {
-            --bg-main: #0d0d0d;
-            --bg-card: #1a1a1a;
-            --text-main: #f5f5f5;
-            --text-muted: #aaaaaa;
-            --accent: #ffb703; /* Teplá africká žluto-oranžová */
-            --accent-hover: #fb8500;
+            --bg-main: #ffffff;
+            --bg-card: #ffffff;
+            --text-main: #111111;
+            --text-muted: #555555;
+            --accent-yellow: #ffb703;
+            --accent-orange: #fb8500;
+            --dark-black: #000000;
         }
         * {
             margin: 0;
@@ -25,13 +26,13 @@
             line-height: 1.6;
         }
         header {
-            background-color: rgba(13, 13, 13, 0.95);
+            background-color: var(--dark-black);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #333;
+            border-bottom: 3px solid var(--accent-orange);
         }
         nav {
             display: flex;
@@ -44,10 +45,13 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
-            color: var(--accent);
+            color: var(--accent-yellow);
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+        .logo span {
+            color: var(--accent-orange);
         }
         .nav-links {
             list-style: none;
@@ -55,21 +59,20 @@
             gap: 20px;
         }
         .nav-links a {
-            color: var(--text-main);
+            color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s;
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
         }
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--accent-yellow);
         }
         .hero {
             height: 100vh;
-            /* Africký motiv savany/západu slunce */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -80,19 +83,24 @@
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 20px;
-            color: var(--accent);
+            color: var(--accent-yellow);
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero h1 span {
+            color: var(--accent-orange);
         }
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
             margin-bottom: 40px;
-            color: #ddd;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         .btn {
-            background-color: var(--accent);
-            color: #000;
+            background-color: var(--accent-orange);
+            color: var(--dark-black);
             padding: 15px 35px;
             text-decoration: none;
             border-radius: 3px;
@@ -105,9 +113,9 @@
             display: inline-block;
         }
         .btn:hover {
-            background-color: var(--accent-hover);
+            background-color: var(--accent-yellow);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 183, 3, 0.3);
+            box-shadow: 0 5px 15px rgba(251, 133, 0, 0.4);
         }
         section {
             padding: 100px 20px 40px;
@@ -118,7 +126,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: var(--text-main);
+            color: var(--dark-black);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -127,16 +135,18 @@
             display: block;
             width: 60px;
             height: 4px;
-            background: var(--accent);
+            background: var(--accent-orange);
             margin: 15px auto 0;
         }
         .content-box {
-            background: var(--bg-card);
+            background: #ffffff;
             padding: 40px;
             border-radius: 5px;
             text-align: center;
             margin-bottom: 40px;
-            border-left: 4px solid var(--accent);
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--accent-yellow);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
         .cards {
             display: grid;
@@ -147,17 +157,20 @@
             background: var(--bg-card);
             border-radius: 5px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
+            border: 1px solid #e0e0e0;
+            border-bottom: 4px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
         .card:hover {
             transform: translateY(-10px);
-            border-bottom: 3px solid var(--accent);
+            border-bottom: 4px solid var(--accent-orange);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
         .card-img {
             height: 220px;
-            background-color: #333;
+            background-color: #eee;
             background-size: cover;
             background-position: center;
         }
@@ -165,7 +178,7 @@
             padding: 25px;
         }
         .card-content h3 {
-            color: var(--accent);
+            color: var(--dark-black);
             margin-bottom: 15px;
             font-size: 1.4rem;
         }
@@ -175,26 +188,60 @@
         }
         .card-btn {
             background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 8px 20px;
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+            padding: 10px 20px;
             border-radius: 3px;
             cursor: pointer;
             transition: 0.3s;
             font-weight: bold;
             width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .card:hover .card-btn {
-            background: var(--accent);
-            color: #000;
+            background: var(--accent-orange);
+            color: var(--dark-black);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .contact-item {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--dark-black);
+        }
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: var(--dark-black);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+        .contact-item p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .contact-item a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-item a:hover {
+            color: var(--accent-yellow);
         }
         footer {
-            background-color: #000;
-            color: var(--text-muted);
+            background-color: var(--dark-black);
+            color: #888888;
             text-align: center;
             padding: 30px;
             margin-top: 50px;
-            border-top: 1px solid #222;
+            border-top: 3px solid var(--accent-yellow);
         }
 
         /* Modal Okna */
@@ -204,7 +251,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.75);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -212,14 +259,15 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
         }
         .modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
         .modal-content {
-            background: var(--bg-card);
+            background: #ffffff;
+            color: var(--text-main);
             width: 90%;
             max-width: 800px;
             border-radius: 5px;
@@ -227,7 +275,8 @@
             position: relative;
             transform: translateY(20px);
             transition: all 0.3s ease;
-            border-top: 4px solid var(--accent);
+            border-top: 5px solid var(--accent-orange);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .modal-overlay.active .modal-content {
             transform: translateY(0);
@@ -236,14 +285,15 @@
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 2rem;
-            color: var(--text-main);
+            font-size: 2.2rem;
+            color: var(--dark-black);
             cursor: pointer;
             z-index: 10;
             transition: color 0.3s;
+            font-weight: bold;
         }
         .modal-close:hover {
-            color: var(--accent);
+            color: var(--accent-orange);
         }
         .modal-body {
             display: flex;
@@ -260,9 +310,10 @@
             padding: 40px;
         }
         .modal-info h3 {
-            color: var(--accent);
+            color: var(--dark-black);
             font-size: 2rem;
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
         .modal-info ul {
             margin: 20px 0;
@@ -273,7 +324,7 @@
             margin-bottom: 10px;
         }
         .modal-info strong {
-            color: var(--text-main);
+            color: var(--dark-black);
         }
 
         html {
@@ -284,17 +335,18 @@
 <body>
     <header>
         <nav>
-            <a href="#" class="logo">Safra-Go.cz</a>
+            <a href="#" class="logo">Safra-<span>Go</span>.cz</a>
             <ul class="nav-links">
                 <li><a href="#kdo-jsme">Kdo jsme</a></li>
                 <li><a href="#co-delame">Co děláme</a></li>
                 <li><a href="#cesty">Ukázkové cesty</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>Safra-Go.cz</h1>
+        <h1>Safra-<span>Go</span>.cz</h1>
         <p>Volný čas je asi to nejdražší, co máte. Investujte ho zodpovědně a objevujte krásy planety po svém.</p>
         <a href="#cesty" class="btn">Prozkoumat cesty</a>
     </div>
@@ -316,7 +368,6 @@
     <section id="cesty">
         <h2>Ukázkové cesty</h2>
         <div class="cards">
-            <!-- Karta 1 -->
             <div class="card" onclick="openModal('modal-afrika')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
@@ -325,7 +376,6 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <!-- Karta 2 -->
             <div class="card" onclick="openModal('modal-kamcatka')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
@@ -334,7 +384,6 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <!-- Karta 3 -->
             <div class="card" onclick="openModal('modal-portugalsko')">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 <div class="card-content">
@@ -346,11 +395,29 @@
         </div>
     </section>
 
+    <section id="kontakt">
+        <h2>Kontaktujte nás</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>Napište nám</h3>
+                <p><a href="mailto:info@safra-go.cz">info@safra-go.cz</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>Kde nás najdete</h3>
+                <p>Safra-Go.cz</p>
+                <p>Česká republika</p>
+            </div>
+            <div class="contact-item">
+                <h3>Sledujte nás</h3>
+                <p>Brzy spustíme sociální sítě</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
     </footer>
 
-    <!-- MODALNÍ OKNA -->
     <div id="modal-afrika" class="modal-overlay" onclick="closeModal(event, 'modal-afrika')">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModalForce('modal-afrika')">&times;</span>
@@ -411,15 +478,12 @@
         </div>
     </div>
 
-    <!-- JavaScript pro ovládání modálních oken -->
     <script>
-        // Otevření modálu
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden'; // Zabrání scrollování stránky pod oknem
+            document.body.style.overflow = 'hidden';
         }
 
-        // Zavření modálu při kliknutí mimo obsah (na overlay)
         function closeModal(event, modalId) {
             if (event.target.id === modalId) {
                 document.getElementById(modalId).classList.remove('active');
@@ -427,7 +491,6 @@
             }
         }
 
-        // Zavření modálu křížkem
         function closeModalForce(modalId) {
             document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
