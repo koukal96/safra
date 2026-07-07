@@ -24,10 +24,10 @@
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
-            font-family: 'Montserrat', sans-serif; /* Moderní čistý font pro texty */
+            font-family: 'Montserrat', sans-serif;
         }
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif; /* Elegantní serifový font pro nadpisy, ladí s logem */
+            font-family: 'Playfair Display', serif; 
         }
         
         /* --- SVĚTLÁ HLAVIČKA --- */
@@ -80,7 +80,6 @@
         /* --- HERO SEKCE --- */
         .hero {
             height: 100vh;
-            /* Teplejší překryv fotky (lehce do hněda/africka) místo čistě černé */
             background: linear-gradient(rgba(30, 25, 20, 0.5), rgba(30, 25, 20, 0.7)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             flex-direction: column;
@@ -135,7 +134,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        #kdo-jsme {
+        #kdo-jsme, #kontakt {
             background-color: var(--bg-alt);
             max-width: 100%;
             padding-left: 20px;
@@ -254,7 +253,7 @@
             color: var(--accent-dark);
         }
 
-        /* --- FB SEKCE --- */
+        /* --- YOUTUBE SEKCE --- */
         #sledujte-nas {
             background-color: var(--bg-alt);
             max-width: 100%;
@@ -267,6 +266,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.03);
             max-width: 900px;
             margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         .social-presentation p {
             font-size: 1.25rem;
@@ -291,7 +291,7 @@
             70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(245, 166, 35, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0); }
         }
-        .fb-hero-btn {
+        .yt-hero-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -308,17 +308,66 @@
             animation: pulse 2.5s infinite;
             box-shadow: 0 10px 20px rgba(245, 166, 35, 0.2);
         }
-        .fb-hero-btn:hover {
+        .yt-hero-btn:hover {
             background-color: var(--accent-dark);
             color: var(--accent-yellow);
             animation: none;
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-        .fb-hero-btn svg {
-            width: 28px;
-            height: 28px;
+        .yt-hero-btn svg {
+            width: 32px;
+            height: 32px;
             fill: currentColor;
+        }
+
+        /* --- KONTAKT SEKCE --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .contact-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-yellow);
+        }
+        .contact-card h3 {
+            color: var(--accent-dark);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+        .contact-card a {
+            color: var(--accent-dark);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-card a:hover {
+            color: var(--accent-yellow);
+        }
+        .small-text {
+            font-size: 0.85rem !important;
+            margin-top: 15px;
+            line-height: 1.4;
+            color: #888;
+        }
+        .btn-small {
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            width: 100%;
         }
 
         /* --- PATIČKA --- */
@@ -338,7 +387,7 @@
             width: auto;
         }
 
-        /* --- MODÁLNÍ OKNA (AFRICKÝ TOP STYL) --- */
+        /* --- MODÁLNÍ OKNA --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -373,7 +422,6 @@
             transform: translateY(0) scale(1);
         }
         
-        /* Dekorace okna */
         .modal-header-decor {
             height: 6px;
             background: linear-gradient(90deg, var(--accent-yellow), #e69514);
@@ -431,7 +479,7 @@
             font-weight: 500;
         }
         
-        /* Galerie v okně */
+        /* Galerie v okně pro expedice */
         .modal-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -453,27 +501,39 @@
             box-shadow: 0 15px 30px rgba(245, 166, 35, 0.2);
         }
 
+        /* Galerie v okně pro dokumenty (certifikáty) */
+        .cert-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .cert-img {
+            height: 500px;
+            background-color: #fcfcfc;
+            border-radius: 8px;
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid #eeeeee;
+        }
+
         /* --- RESPONSIVNÍ DESIGN --- */
         @media (max-width: 900px) {
             .hero h1 { font-size: 3.5rem; }
             h2 { font-size: 2.2rem; }
         }
         @media (max-width: 768px) {
-            header {
-                padding: 10px 0;
-            }
-            nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 10px;
-            }
+            header { padding: 10px 0; }
+            nav { flex-direction: column; gap: 15px; padding: 10px; }
             .logo-img { height: 55px; }
             section { padding: 160px 15px 50px; }
             .hero h1 { font-size: 2.8rem; letter-spacing: 1px; }
             .hero p { font-size: 1.1rem; padding: 0 10px; }
             
             .modal-body { padding: 40px 20px; }
-            .modal-gallery { grid-template-columns: 1fr; gap: 15px; }
+            .modal-gallery, .cert-gallery { grid-template-columns: 1fr; gap: 15px; }
+            .cert-img { height: 400px; }
             .modal-body h3 { font-size: 2rem; }
         }
         @media (max-width: 480px) {
@@ -481,24 +541,10 @@
             .nav-links a { font-size: 0.8rem; }
             .hero h1 { font-size: 2.2rem; }
             .content-box { padding: 30px 15px; }
-            .fb-hero-btn { font-size: 1rem; padding: 15px 25px; width: 100%; }
+            .yt-hero-btn { font-size: 1rem; padding: 15px 25px; width: 100%; }
             .cards { grid-template-columns: 1fr; }
             .card-img { height: 200px; }
         }
-                /* Kontakt sekce */
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
-        .contact-card { background: #ffffff; padding: 40px 30px; border-radius: 8px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); border-top: 4px solid var(--accent-yellow); }
-        .contact-card h3 { color: var(--accent-dark); font-size: 1.5rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
-        .contact-card p { color: var(--text-muted); margin-bottom: 12px; font-size: 1.05rem; }
-        .contact-card a { color: var(--accent-dark); font-weight: 600; text-decoration: none; transition: color 0.3s; }
-        .contact-card a:hover { color: var(--accent-yellow); }
-        .small-text { font-size: 0.85rem !important; margin-top: 15px; line-height: 1.4; color: #888; }
-        .btn-small { padding: 12px 20px; font-size: 0.85rem; margin-top: 15px; width: 100%; }
-
-        /* Galerie certifikátů v okně */
-        .cert-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 20px; }
-        .cert-img { height: 500px; background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #eeeeee; }
-
     </style>
 </head>
 <body>
@@ -509,9 +555,9 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#kdo-jsme">Kdo jsme</a></li>
-                <li><a href="#co-delame">Co děláme</a></li>
                 <li><a href="#cesty">Naše cesty</a></li>
-                <li><a href="#sledujte-nas">Aktuality na FB</a></li>
+                <li><a href="#sledujte-nas">Naše Video</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </nav>
     </header>
@@ -540,8 +586,10 @@
 
     <section id="cesty">
         <h2>Ukázkové cesty</h2>
-        <div class="cards">
-            <!-- Karta 1 -->
+        <!-- Zde probíhá míchání karet pomocí JavaScriptu níže -->
+        <div class="cards" id="expedice-karty">
+            
+            <!-- Karta 1: Afrika -->
             <div class="card" onclick="openModal('modal-1')">
                 <div class="card-img-wrapper">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
@@ -552,7 +600,8 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <!-- Karta 2 -->
+            
+            <!-- Karta 2: Kamčatka -->
             <div class="card" onclick="openModal('modal-2')">
                 <div class="card-img-wrapper">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
@@ -563,7 +612,8 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
-            <!-- Karta 3 -->
+            
+            <!-- Karta 3: Portugalsko -->
             <div class="card" onclick="openModal('modal-3')">
                 <div class="card-img-wrapper">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
@@ -574,27 +624,31 @@
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- FB SEKCE -->
+    <!-- YOUTUBE SEKCE -->
     <section id="sledujte-nas">
         <div class="section-inner">
             <h2>Jsme online!</h2>
             <div class="social-presentation">
-                <p>Tento web slouží jako portfolio našich vizí a toho, co dokážeme. Nechceme vás zdržovat formuláři. <strong>Veškeré aktuality, termíny expedic, nové fotky a přímý kontakt s námi probíhá tam, kde to žije.</strong></p>
+                <p>Tento web slouží jako portfolio našich vizí a toho, co dokážeme. Nechceme vás zdržovat formuláři. <strong>Veškeré aktuality, termíny expedic a to jak naše výpravy vypadají v realitě, najdete na našem videu.</strong></p>
                 
                 <div class="animated-arrow">↓</div><br>
                 
-                <a href="https://www.facebook.com/share/1ELeic3on6/?mibextid=wwXIfr" target="_blank" class="fb-hero-btn">
-                    <svg viewBox="0 0 320 512">
-                        <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                <!-- Odkaz na YouTube -->
+                <a href="https://youtu.be/xhR-dmgjcww?is=VbbY5kLJp9wCuX3y" target="_blank" class="yt-hero-btn">
+                    <!-- Ikona YouTube -->
+                    <svg viewBox="0 0 576 512">
+                        <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
                     </svg>
-                    Koukněte na náš Facebook
+                    Koukněte na naše video
                 </a>
             </div>
         </div>
     </section>
+
     <!-- SEKCE KONTAKT A POJIŠTĚNÍ -->
     <section id="kontakt">
         <div class="section-inner">
@@ -611,7 +665,9 @@
                 <!-- Spojení -->
                 <div class="contact-card">
                     <h3>Spojte se s námi</h3>
+                    <br>
                     <p><strong>Telefon:</strong><br><a href="tel:+420604119957">+420 604 119 957</a></p>
+                    <br>
                     <p><strong>E-mail:</strong><br><a href="mailto:info@safra-go.cz">info@safra-go.cz</a></p>
                 </div>
                 
@@ -619,11 +675,16 @@
                 <div class="contact-card">
                     <h3>Pojištění proti úpadku</h3>
                     <p>Zakládáme si na spolehlivosti a bezpečí. Jsme pojištěni proti úpadku u pojišťovny Union poisťovňa.</p>
-                    <button class="btn btn-small" onclick="openModal('modal-certifikaty')">Zobrazit certifikáty</button>
+                    <button class="btn btn-small" onclick="openModal('modal-certifikaty')">Certifikát o pojištění a zápisu zde</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <img src="IMG_0242.png" alt="Safra-Go Logo Patička" class="footer-logo">
+        <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
+    </footer>
 
     <!-- MODÁLNÍ OKNO PRO CERTIFIKÁTY -->
     <div id="modal-certifikaty" class="modal-overlay" onclick="closeModal(event, 'modal-certifikaty')">
@@ -641,12 +702,7 @@
         </div>
     </div>
 
-    <footer>
-        <img src="IMG_0242.png" alt="Safra-Go Logo Patička" class="footer-logo">
-        <p>&copy; 2026 Safra-Go.cz. Vytvořte si expedici sami podle svého přání.</p>
-    </footer>
-
-    <!-- MODÁLNÍ OKNA -->
+    <!-- MODÁLNÍ OKNA PRO EXPEDICE (1, 2, 3) -->
     <div id="modal-1" class="modal-overlay" onclick="closeModal(event, 'modal-1')">
         <div class="modal-content">
             <div class="modal-header-decor"></div>
@@ -659,7 +715,7 @@
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
-                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-1')">Aktuality na Facebooku</a>
+                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-1')">Koukněte na video</a>
             </div>
         </div>
     </div>
@@ -676,7 +732,7 @@
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1534151778216-3e0c0df4e2a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
-                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-2')">Aktuality na Facebooku</a>
+                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-2')">Koukněte na video</a>
             </div>
         </div>
     </div>
@@ -693,12 +749,13 @@
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1522069213448-443a614a8b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                 </div>
-                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-3')">Aktuality na Facebooku</a>
+                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-3')">Koukněte na video</a>
             </div>
         </div>
     </div>
 
     <script>
+        // Funkce pro otevření a zavření modálních oken
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -713,6 +770,21 @@
             document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+
+        // Funkce pro NÁHODNÉ zamíchání expedic při každém načtení stránky
+        document.addEventListener("DOMContentLoaded", function() {
+            const cardsContainer = document.getElementById('expedice-karty');
+            const cards = Array.from(cardsContainer.children);
+            
+            // Fisher-Yates shuffle algoritmus pro náhodné zamíchání
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            
+            // Vložení zamíchaných karet zpět na stránku
+            cards.forEach(card => cardsContainer.appendChild(card));
+        });
     </script>
 </body>
 </html>
