@@ -12,7 +12,7 @@
             --bg-alt: #fcfbf9;
             --text-main: #2b2b2b;
             --text-muted: #555555;
-            --accent-yellow: #f5a623;
+            --accent-yellow: #f5a623; /* Oranžovo-žlutá z loga */
             --accent-dark: #111111;
         }
         * {
@@ -80,7 +80,6 @@
         /* --- HERO SEKCE --- */
         .hero {
             height: 100vh;
-            /* ZDE JE ZMĚNĚNA FOTKA NA TVOJÍ: safari 5.jpeg */
             background: linear-gradient(rgba(30, 25, 20, 0.5), rgba(30, 25, 20, 0.7)), url('safari 5.jpeg') center/cover;
             display: flex;
             flex-direction: column;
@@ -228,12 +227,13 @@
         .card-content h3 {
             color: var(--accent-dark);
             margin-bottom: 15px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
         .card-content p {
             color: var(--text-muted);
             margin-bottom: 25px;
             font-size: 0.95rem;
+            font-weight: 500;
         }
         .card-btn {
             background: transparent;
@@ -383,7 +383,7 @@
         }
         .modal-body h3 {
             color: var(--accent-dark);
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -412,29 +412,36 @@
             font-weight: 500;
         }
 
-        /* --- Tlačítko YouTube v modálu --- */
+        /* --- Tlačítko YouTube v modálu s pulzováním --- */
+        @keyframes pulse-btn {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.6); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(245, 166, 35, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0); }
+        }
+
         .modal-yt-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background-color: #FF0000;
-            color: #ffffff;
-            padding: 15px 35px;
-            font-size: 1.1rem;
+            background-color: var(--accent-yellow);
+            color: var(--accent-dark);
+            padding: 16px 35px;
+            font-size: 1.15rem;
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s;
             margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+            animation: pulse-btn 2s infinite;
         }
         .modal-yt-btn:hover {
-            background-color: #cc0000;
+            background-color: var(--accent-dark);
+            color: var(--accent-yellow);
+            animation: none; /* Vypne pulzování při najetí */
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
-            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         .modal-yt-btn svg {
             width: 28px;
@@ -523,7 +530,6 @@
             <ul class="nav-links">
                 <li><a href="#kdo-jsme">Kdo jsme</a></li>
                 <li><a href="#cesty">Naše cesty</a></li>
-                <!-- Odstraněno tlačítko Naše Video -->
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </nav>
@@ -553,41 +559,100 @@
 
     <section id="cesty">
         <h2>Ukázkové cesty</h2>
-        <!-- Zde probíhá míchání karet pomocí JavaScriptu níže -->
         <div class="cards" id="expedice-karty">
             
-            <!-- Karta 1: Afrika -->
+            <!-- Karta 1: Jih Afriky -->
             <div class="card" onclick="openModal('modal-1')">
                 <div class="card-img-wrapper">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 </div>
                 <div class="card-content">
-                    <h3>Expedice Afrika</h3>
-                    <p>Máme za sebou několik expedic s horskými koly, trasy různých náročností v dechberoucím prostředí.</p>
+                    <h3>Expedice Jih Afriky</h3>
+                    <p>Safari &bull; Hory &bull; Lidé a kultura &bull; Horská kola</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
             
-            <!-- Karta 2: Kamčatka -->
+            <!-- Karta 2: Ostrov sv. Tomáše -->
             <div class="card" onclick="openModal('modal-2')">
                 <div class="card-img-wrapper">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1589405858862-2ae5c3258d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 </div>
                 <div class="card-content">
-                    <h3>Expedice Kamčatka</h3>
-                    <p>Máme za sebou několik expedic s horskými koly, trasy různých náročností v divoké přírodě.</p>
+                    <h3>Expedice Ostrov sv. Tomáše</h3>
+                    <p>Příroda &bull; Lidé a kultura</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
             
-            <!-- Karta 3: Portugalsko -->
+            <!-- Karta 3: Kostarika -->
             <div class="card" onclick="openModal('modal-3')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1518182170546-076616fd61fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Kostarika</h3>
+                    <p>Příroda &bull; Sport</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 4: Kazachstán -->
+            <div class="card" onclick="openModal('modal-4')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1554988701-447a195b09dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Kazachstán</h3>
+                    <p>Turistika Altaj</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 5: Pákistán -->
+            <div class="card" onclick="openModal('modal-5')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1586015555541-11910ee24f9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Pákistán</h3>
+                    <p>Turistika</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 6: Indie -->
+            <div class="card" onclick="openModal('modal-6')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Indie</h3>
+                    <p>Lidé a kultura</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 7: Čína a Japonsko (New) -->
+            <div class="card" onclick="openModal('modal-7')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Čína a Japonsko (New)</h3>
+                    <p>Lidé a kultura</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 8: Portugalsko -->
+            <div class="card" onclick="openModal('modal-8')">
                 <div class="card-img-wrapper">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 </div>
                 <div class="card-content">
                     <h3>Expedice Portugalsko</h3>
-                    <p>Máme za sebou několik expedic s horskými koly, trasy různých náročností s prémiovým servisem.</p>
+                    <p>Lidé a kultura &bull; Horská kola</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
@@ -648,22 +713,20 @@
         </div>
     </div>
 
-    <!-- MODÁLNÍ OKNA PRO EXPEDICE (1, 2, 3) -->
+    <!-- MODÁLNÍ OKNA PRO EXPEDICE -->
+    
+    <!-- Modal 1: Jih Afriky -->
     <div id="modal-1" class="modal-overlay" onclick="closeModal(event, 'modal-1')">
         <div class="modal-content">
             <div class="modal-header-decor"></div>
             <span class="modal-close" onclick="closeModalForce('modal-1')">&times;</span>
             <div class="modal-body">
-                <h3>Expedice Afrika</h3>
+                <h3>Expedice Jih Afriky</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
-                
-                <!-- Unikátní odkaz na YouTube (Doplň reálný odkaz do href) -->
                 <a href="#" target="_blank" class="modal-yt-btn">
                     <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Přehrát video z expedice
+                    Klikni a podívej se na video!
                 </a>
-
-                <!-- Měnící se fotky (Slideshow) -->
                 <div class="slideshow-container">
                     <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
@@ -673,45 +736,144 @@
         </div>
     </div>
 
+    <!-- Modal 2: Ostrov sv. Tomáše -->
     <div id="modal-2" class="modal-overlay" onclick="closeModal(event, 'modal-2')">
         <div class="modal-content">
             <div class="modal-header-decor"></div>
             <span class="modal-close" onclick="closeModalForce('modal-2')">&times;</span>
             <div class="modal-body">
-                <h3>Expedice Kamčatka</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup nám umožňuje tvořit bezpečné cesty.</p>
-                
-                <!-- Unikátní odkaz na YouTube (Doplň reálný odkaz do href) -->
+                <h3>Expedice Ostrov sv. Tomáše</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
                 <a href="#" target="_blank" class="modal-yt-btn">
                     <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Přehrát video z expedice
+                    Klikni a podívej se na video!
                 </a>
-
-                <!-- Měnící se fotky (Slideshow) -->
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1534151778216-3e0c0df4e2a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1589405858862-2ae5c3258d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Modal 3: Kostarika -->
     <div id="modal-3" class="modal-overlay" onclick="closeModal(event, 'modal-3')">
         <div class="modal-content">
             <div class="modal-header-decor"></div>
             <span class="modal-close" onclick="closeModalForce('modal-3')">&times;</span>
             <div class="modal-body">
-                <h3>Expedice Portugalsko</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, obohacené o to nejlepší z místní kultury a gastronomie. Vyladěno do posledního detailu.</p>
-                
-                <!-- Unikátní odkaz na YouTube (Doplň reálný odkaz do href) -->
+                <h3>Expedice Kostarika</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
                 <a href="#" target="_blank" class="modal-yt-btn">
                     <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Přehrát video z expedice
+                    Klikni a podívej se na video!
                 </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1518182170546-076616fd61fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550503195-2eb4d57c31e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1580227183141-8db2de3b1907?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Měnící se fotky (Slideshow) -->
+    <!-- Modal 4: Kazachstán -->
+    <div id="modal-4" class="modal-overlay" onclick="closeModal(event, 'modal-4')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-4')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Kazachstán</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1554988701-447a195b09dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1587280501635-a1976f0c60f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1601625902187-b9561b3695ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Pákistán -->
+    <div id="modal-5" class="modal-overlay" onclick="closeModal(event, 'modal-5')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-5')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Pákistán</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1586015555541-11910ee24f9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1596706030999-52e1f2cc0c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563804825969-90696eb6ea0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Indie -->
+    <div id="modal-6" class="modal-overlay" onclick="closeModal(event, 'modal-6')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-6')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Indie</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1514222134-b57cbb8ce073?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1472289065668-ce650ce44399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: Čína a Japonsko (New) -->
+    <div id="modal-7" class="modal-overlay" onclick="closeModal(event, 'modal-7')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-7')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Čína a Japonsko (New)</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542051812871-75f56cc947d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8: Portugalsko -->
+    <div id="modal-8" class="modal-overlay" onclick="closeModal(event, 'modal-8')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-8')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Portugalsko</h3>
+                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
                 <div class="slideshow-container">
                     <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
@@ -759,7 +921,7 @@
 
         // Spustí se po načtení stránky
         document.addEventListener("DOMContentLoaded", function() {
-            // Míchání karet expedic
+            // Míchání karet expedic - zajistí náhodné pořadí při každém načtení stránky
             const cardsContainer = document.getElementById('expedice-karty');
             const cards = Array.from(cardsContainer.children);
             
