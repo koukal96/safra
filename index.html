@@ -9,10 +9,10 @@
     <style>
         :root {
             --bg-main: #ffffff;
-            --bg-alt: #fcfbf9; /* Velmi jemný teplý odstín bílé pro kontrast sekcí */
+            --bg-alt: #fcfbf9;
             --text-main: #2b2b2b;
             --text-muted: #555555;
-            --accent-yellow: #f5a623; /* Žlutá inspirovaná logem */
+            --accent-yellow: #f5a623;
             --accent-dark: #111111;
         }
         * {
@@ -80,7 +80,8 @@
         /* --- HERO SEKCE --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(30, 25, 20, 0.5), rgba(30, 25, 20, 0.7)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            /* ZDE JE ZMĚNĚNA FOTKA NA TVOJÍ: safari 5.jpeg */
+            background: linear-gradient(rgba(30, 25, 20, 0.5), rgba(30, 25, 20, 0.7)), url('safari 5.jpeg') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -253,74 +254,6 @@
             color: var(--accent-dark);
         }
 
-        /* --- YOUTUBE SEKCE --- */
-        #sledujte-nas {
-            background-color: var(--bg-alt);
-            max-width: 100%;
-        }
-        .social-presentation {
-            text-align: center;
-            padding: 80px 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        .social-presentation p {
-            font-size: 1.25rem;
-            color: var(--text-main);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-        }
-        .animated-arrow {
-            font-size: 3rem;
-            color: var(--accent-yellow);
-            animation: bounce 2s infinite;
-            margin-bottom: 30px;
-            display: inline-block;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(245, 166, 35, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0); }
-        }
-        .yt-hero-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background-color: var(--accent-yellow);
-            color: var(--accent-dark);
-            padding: 20px 45px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            animation: pulse 2.5s infinite;
-            box-shadow: 0 10px 20px rgba(245, 166, 35, 0.2);
-        }
-        .yt-hero-btn:hover {
-            background-color: var(--accent-dark);
-            color: var(--accent-yellow);
-            animation: none;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        .yt-hero-btn svg {
-            width: 32px;
-            height: 32px;
-            fill: currentColor;
-        }
-
         /* --- KONTAKT SEKCE --- */
         .contact-grid {
             display: grid;
@@ -445,7 +378,7 @@
             transform: rotate(90deg);
         }
         .modal-body {
-            padding: 60px 50px;
+            padding: 50px;
             text-align: center;
         }
         .modal-body h3 {
@@ -470,7 +403,7 @@
         .modal-text {
             font-size: 1.15rem;
             color: var(--text-muted);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             margin-top: 20px;
             max-width: 750px;
             margin-left: auto;
@@ -478,27 +411,59 @@
             line-height: 1.8;
             font-weight: 500;
         }
-        
-        /* Galerie v okně pro expedice */
-        .modal-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+
+        /* --- Tlačítko YouTube v modálu --- */
+        .modal-yt-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #FF0000;
+            color: #ffffff;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
             margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
         }
-        .modal-gallery-img {
-            height: 220px;
-            background-color: #f5f5f5;
+        .modal-yt-btn:hover {
+            background-color: #cc0000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+            color: #ffffff;
+        }
+        .modal-yt-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* --- SLIDESHOW (Měnící se fotky) --- */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
             border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            cursor: pointer;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
         }
-        .modal-gallery-img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(245, 166, 35, 0.2);
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
         }
 
         /* Galerie v okně pro dokumenty (certifikáty) */
@@ -532,18 +497,20 @@
             .hero p { font-size: 1.1rem; padding: 0 10px; }
             
             .modal-body { padding: 40px 20px; }
-            .modal-gallery, .cert-gallery { grid-template-columns: 1fr; gap: 15px; }
+            .slideshow-container { height: 250px; }
+            .cert-gallery { grid-template-columns: 1fr; gap: 15px; }
             .cert-img { height: 400px; }
             .modal-body h3 { font-size: 2rem; }
+            .modal-yt-btn { padding: 12px 25px; font-size: 1rem; width: 100%; }
         }
         @media (max-width: 480px) {
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
             .nav-links a { font-size: 0.8rem; }
             .hero h1 { font-size: 2.2rem; }
             .content-box { padding: 30px 15px; }
-            .yt-hero-btn { font-size: 1rem; padding: 15px 25px; width: 100%; }
             .cards { grid-template-columns: 1fr; }
             .card-img { height: 200px; }
+            .slideshow-container { height: 200px; }
         }
     </style>
 </head>
@@ -556,7 +523,7 @@
             <ul class="nav-links">
                 <li><a href="#kdo-jsme">Kdo jsme</a></li>
                 <li><a href="#cesty">Naše cesty</a></li>
-                <li><a href="#sledujte-nas">Naše Video</a></li>
+                <!-- Odstraněno tlačítko Naše Video -->
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </nav>
@@ -628,27 +595,6 @@
         </div>
     </section>
 
-    <!-- YOUTUBE SEKCE -->
-    <section id="sledujte-nas">
-        <div class="section-inner">
-            <h2>Jsme online!</h2>
-            <div class="social-presentation">
-                <p>Tento web slouží jako portfolio našich vizí a toho, co dokážeme. Nechceme vás zdržovat formuláři. <strong>Veškeré aktuality, termíny expedic a to jak naše výpravy vypadají v realitě, najdete na našem videu.</strong></p>
-                
-                <div class="animated-arrow">↓</div><br>
-                
-                <!-- Odkaz na YouTube -->
-                <a href="https://youtu.be/xhR-dmgjcww?is=VbbY5kLJp9wCuX3y" target="_blank" class="yt-hero-btn">
-                    <!-- Ikona YouTube -->
-                    <svg viewBox="0 0 576 512">
-                        <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
-                    </svg>
-                    Koukněte na naše video
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- SEKCE KONTAKT A POJIŠTĚNÍ -->
     <section id="kontakt">
         <div class="section-inner">
@@ -710,12 +656,19 @@
             <div class="modal-body">
                 <h3>Expedice Afrika</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
-                <div class="modal-gallery">
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                
+                <!-- Unikátní odkaz na YouTube (Doplň reálný odkaz do href) -->
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Přehrát video z expedice
+                </a>
+
+                <!-- Měnící se fotky (Slideshow) -->
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                 </div>
-                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-1')">Koukněte na video</a>
             </div>
         </div>
     </div>
@@ -727,12 +680,19 @@
             <div class="modal-body">
                 <h3>Expedice Kamčatka</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup nám umožňuje tvořit bezpečné cesty.</p>
-                <div class="modal-gallery">
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1534151778216-3e0c0df4e2a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                
+                <!-- Unikátní odkaz na YouTube (Doplň reálný odkaz do href) -->
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Přehrát video z expedice
+                </a>
+
+                <!-- Měnící se fotky (Slideshow) -->
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1534151778216-3e0c0df4e2a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                 </div>
-                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-2')">Koukněte na video</a>
             </div>
         </div>
     </div>
@@ -744,12 +704,19 @@
             <div class="modal-body">
                 <h3>Expedice Portugalsko</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, obohacené o to nejlepší z místní kultury a gastronomie. Vyladěno do posledního detailu.</p>
-                <div class="modal-gallery">
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="modal-gallery-img" style="background-image: url('https://images.unsplash.com/photo-1522069213448-443a614a8b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                
+                <!-- Unikátní odkaz na YouTube (Doplň reálný odkaz do href) -->
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Přehrát video z expedice
+                </a>
+
+                <!-- Měnící se fotky (Slideshow) -->
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522069213448-443a614a8b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                 </div>
-                <a href="#sledujte-nas" class="btn" onclick="closeModalForce('modal-3')">Koukněte na video</a>
             </div>
         </div>
     </div>
@@ -771,19 +738,39 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Funkce pro NÁHODNÉ zamíchání expedic při každém načtení stránky
+        // Zprovoznění měnících se fotek (slideshow) pro všechna okna
+        function initSlideshows() {
+            const slideshows = document.querySelectorAll('.slideshow-container');
+            
+            slideshows.forEach(container => {
+                const slides = container.querySelectorAll('.slide');
+                if(slides.length === 0) return;
+                
+                let currentSlide = 0;
+                
+                // Měnění fotek každých 5000 ms (5 sekund)
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 5000); 
+            });
+        }
+
+        // Spustí se po načtení stránky
         document.addEventListener("DOMContentLoaded", function() {
+            // Míchání karet expedic
             const cardsContainer = document.getElementById('expedice-karty');
             const cards = Array.from(cardsContainer.children);
             
-            // Fisher-Yates shuffle algoritmus pro náhodné zamíchání
             for (let i = cards.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [cards[i], cards[j]] = [cards[j], cards[i]];
             }
-            
-            // Vložení zamíchaných karet zpět na stránku
             cards.forEach(card => cardsContainer.appendChild(card));
+
+            // Spuštění slideshow fotek v modálních oknech
+            initSlideshows();
         });
     </script>
 </body>
