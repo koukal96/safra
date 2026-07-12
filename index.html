@@ -502,6 +502,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
+            object-fit: cover; /* Zajistí, že se i klasické <img> nedeformují */
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             z-index: 1;
@@ -606,7 +607,31 @@
                 </div>
                 <div class="card-content">
                     <h3>Expedice Jih Afriky</h3>
-                    <p>Safari &bull; Hory &bull; Lidé a kultura &bull; Horská kola</p>
+                    <p>Hory &bull; Lidé a kultura &bull; Horská kola</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 10: Afrika - Safari (Nová) -->
+            <div class="card" onclick="openModal('modal-10')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Afrika - Safari</h3>
+                    <p>Safari</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 11: Afrika - Motorky (Nová) -->
+            <div class="card" onclick="openModal('modal-11')">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Afrika - Motorky</h3>
+                    <p>Motorky</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
@@ -671,10 +696,9 @@
                 </div>
             </div>
 
-            <!-- Karta 7: Čína a Japonsko (S novou značkou) -->
+            <!-- Karta 7: Čína a Japonsko -->
             <div class="card" onclick="openModal('modal-7')">
                 <div class="card-img-wrapper">
-                    <!-- Štítek NOVÉ -->
                     <div class="badge-new">Nové</div>
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                 </div>
@@ -693,6 +717,20 @@
                 <div class="card-content">
                     <h3>Expedice Portugalsko</h3>
                     <p>Lidé a kultura &bull; Horská kola</p>
+                    <button class="card-btn">Více informací</button>
+                </div>
+            </div>
+
+            <!-- Karta 9: Holandsko (Nová) -->
+            <div class="card" onclick="openModal('modal-9')">
+                <div class="card-img-wrapper">
+                    <!-- Štítek NOVÉ -->
+                    <div class="badge-new">Nové</div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512466699220-4e321b068dc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Expedice Holandsko</h3>
+                    <p>Loď &bull; Turistika &bull; Kola</p>
                     <button class="card-btn">Více informací</button>
                 </div>
             </div>
@@ -771,7 +809,48 @@
                     <img src="afr1.jpg" alt="Popis fotky 1" class="slide active">
                     <img src="afr2.jpg" alt="Popis fotky 2" class="slide">
                     <img src="afr3.JPG" alt="Popis fotky 3" class="slide">
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal 10: Afrika - Safari -->
+    <div id="modal-10" class="modal-overlay" onclick="closeModal(event, 'modal-10')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-10')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Afrika - Safari</h3>
+                <p class="modal-text">Jihoafrická republika, Botswana nebo Namibie jsou země, kde je safari doma. Velká zvířata jsou vidět v parcích nebo rezervacích. Zde můžeme jezdit buď vlastním (půjčeným) autem nebo parky organizují vyjížďky (ranní, večerní) s místním průvodcem (rangerem). Většina parků má dostatečnou kapacitu a rozsah ubytování (od kempu po chatky). JAR má velkou hustotu parků o různé velikosti (v největším můžete strávit i týden) a dobrou infrastrukturu. Botswana je divočejší, Namibie má málo parků se zvířaty, ale mnoho specifických krajinných scenérií (duny, kaňony).</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1547471080-7fc2caa7bab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 11: Afrika - Motorky -->
+    <div id="modal-11" class="modal-overlay" onclick="closeModal(event, 'modal-11')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-11')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Afrika - Motorky</h3>
+                <p class="modal-text">Máme za sebou několik expedic na motorkách, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek. (Text pro motorky si zde můžeš upravit dle potřeby).</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3c87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                 </div>
             </div>
         </div>
@@ -919,6 +998,27 @@
                     <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1515542622106-78b28af78158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522069213448-443a614a8b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 9: Holandsko -->
+    <div id="modal-9" class="modal-overlay" onclick="closeModal(event, 'modal-9')">
+        <div class="modal-content">
+            <div class="modal-header-decor"></div>
+            <span class="modal-close" onclick="closeModalForce('modal-9')">&times;</span>
+            <div class="modal-body">
+                <h3>Expedice Holandsko</h3>
+                <p class="modal-text">Jaro nebo podzim je dobrá doba na plavbu po kanálech. Jezdíme do Fríska, kde je také mnoho otevřených vodních ploch (jezer) a tak si kromě malebných městeček s větrnými mlýny užijete i pěknou přírodu. Mimo sezonu jsou vodní cesty volnější. Půjčujeme motorové čluny, které jsou plně vybaveny i pro chladnější počasí. Bezpečně odvezou kola, i zásoby.</p>
+                <a href="#" target="_blank" class="modal-yt-btn">
+                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    Klikni a podívej se na video!
+                </a>
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1512466699220-4e321b068dc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560938092-2ee7a18f7734?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1558564177-3e0e71c0800b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
                 </div>
             </div>
         </div>
