@@ -487,7 +487,7 @@
             fill: currentColor;
         }
 
-        /* --- SLIDESHOW (Měnící se fotky) --- */
+        /* --- SLIDESHOW (Změněno pro perfektní fotky a rychlost načítání) --- */
         .slideshow-container {
             position: relative;
             width: 100%;
@@ -496,13 +496,15 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin: 0 auto;
+            background-color: #f4f4f4; /* Jemné pozadí, fotka bude mít své okraje elegantní */
         }
         .slide {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            object-fit: cover; /* Zajistí, že se i klasické <img> nedeformují */
+            
+            /* KLÍČOVÁ ZMĚNA: fotky se nikdy neoříznou (uřezané hlavy), vždy se zmenší aby byly celé */
+            object-fit: contain; 
+            
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             z-index: 1;
@@ -806,9 +808,10 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <img src="afr1.jpg" alt="Popis fotky 1" class="slide active">
-                    <img src="afr2.jpg" alt="Popis fotky 2" class="slide">
-                    <img src="afr3.JPG" alt="Popis fotky 3" class="slide">
+                    <!-- Použití loading="lazy" pro rychlost a efektivitu -->
+                    <img src="afr1.jpg" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="afr2.jpg" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="afr3.JPG" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -827,9 +830,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('afrs1.jpg')"></div>
-                    <div class="slide" style="background-image: url('afrs2.jpg')"></div>
-                    <div class="slide" style="background-image: url('afrs3.jpg')"></div>
+                    <img src="afrs1.JPEG" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="afrs2.JPEG" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="afrs3.JPEG" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -848,9 +851,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('moto1.jfif')"></div>
-                    <div class="slide" style="background-image: url('moto2.jfif')"></div>
-                    <div class="slide" style="background-image: url('moto3.jfif')"></div>
+                    <img src="moto1.jfif" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="moto2.jfif" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="moto3.jfif" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -869,9 +872,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1589405858862-2ae5c3258d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <img src="https://images.unsplash.com/photo-1589405858862-2ae5c3258d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -890,9 +893,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('kost2.JPG')"></div>
-                    <div class="slide" style="background-image: url('kost3.JPG')"></div>
-                    <div class="slide" style="background-image: url('kost4.JPG')"></div>
+                    <img src="kost2.JPG" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="kost3.JPG" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="kost4.JPG" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -911,9 +914,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('kaz2.jpg')"></div>
-                    <div class="slide" style="background-image: url('kaz3.jpeg')"></div>
-                    <div class="slide" style="background-image: url('kaz4.jpg')"></div>
+                    <img src="kaz2.jpg" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="kaz3.jpeg" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="kaz4.jpg" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -932,9 +935,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1586015555541-11910ee24f9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1596706030999-52e1f2cc0c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563804825969-90696eb6ea0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <img src="https://images.unsplash.com/photo-1586015555541-11910ee24f9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1596706030999-52e1f2cc0c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1563804825969-90696eb6ea0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -953,9 +956,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1514222134-b57cbb8ce073?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1472289065668-ce650ce44399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1472289065668-ce650ce44399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -974,9 +977,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
-                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542051812871-75f56cc947d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')"></div>
+                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1542051812871-75f56cc947d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -995,9 +998,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('pt2.JPG')"></div>
-                    <div class="slide" style="background-image: url('pt3.JPG')"></div>
-                    <div class="slide" style="background-image: url('pt4.JPG')"></div>
+                    <img src="pt2.JPG" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="pt3.JPG" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="pt4.JPG" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1016,9 +1019,9 @@
                     Klikni a podívej se na video!
                 </a>
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('hol1.JPG')"></div>
-                    <div class="slide" style="background-image: url('hol2.JPG')"></div>
-                    <div class="slide" style="background-image: url('hol3.JPG')"></div>
+                    <img src="hol1.JPG" alt="Expedice foto" class="slide active" loading="lazy">
+                    <img src="hol2.JPG" alt="Expedice foto" class="slide" loading="lazy">
+                    <img src="hol3.JPG" alt="Expedice foto" class="slide" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1044,19 +1047,19 @@
         // Zprovoznění měnících se fotek (slideshow) pro všechna okna
         function initSlideshows() {
             const slideshows = document.querySelectorAll('.slideshow-container');
-            
+           
             slideshows.forEach(container => {
                 const slides = container.querySelectorAll('.slide');
                 if(slides.length === 0) return;
-                
+               
                 let currentSlide = 0;
-                
+               
                 // Měnění fotek každých 5000 ms (5 sekund)
                 setInterval(() => {
                     slides[currentSlide].classList.remove('active');
                     currentSlide = (currentSlide + 1) % slides.length;
                     slides[currentSlide].classList.add('active');
-                }, 5000); 
+                }, 5000);
             });
         }
 
@@ -1065,7 +1068,7 @@
             // Míchání karet expedic - zajistí náhodné pořadí při každém načtení stránky
             const cardsContainer = document.getElementById('expedice-karty');
             const cards = Array.from(cardsContainer.children);
-            
+           
             for (let i = cards.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [cards[i], cards[j]] = [cards[j], cards[i]];
