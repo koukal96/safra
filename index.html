@@ -471,7 +471,6 @@
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s;
-            margin-bottom: 40px;
             animation: pulse-btn 2s infinite;
         }
         .modal-yt-btn:hover {
@@ -485,6 +484,15 @@
             width: 28px;
             height: 28px;
             fill: currentColor;
+        }
+
+        /* Kontejner pro videa (pokud jich je víc, seřadí se hezky vedle sebe) */
+        .yt-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
 
         /* --- SLIDESHOW (Změněno pro perfektní fotky a rychlost načítání) --- */
@@ -814,10 +822,16 @@
             <div class="modal-body">
                 <h3>Expedice Jih Afriky - Hory</h3>
                 <p class="modal-text">Zejména v Jihoafrické republice si milovníci horských túr přijdou na své. Většina atraktivních lokalit má značené turistické cesty a alespoň minimální infrastrukturu, které řeší začátek a konec několikadenních tras. Dračí hory jsou tak rozlehlé, že k jejich objevování budete potřebovat několik návštěv. Další destinace jsou v oblasti Kapska. Jsou i místa pro lezení s lanem nebo bouldering. Několik expedic jsme dělali i pro nadšence horských kol.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://youtu.be/ZMyIYhXQF3U?feature=shared" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                    <a href="https://youtu.be/IODf42PPg4A?is=gm0mAu-hnbI4ghYf" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video 2!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="afr1.jpg" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="afr2.jpg" alt="Expedice foto" class="slide" loading="lazy">
@@ -835,10 +849,16 @@
             <div class="modal-body">
                 <h3>Expedice Afrika - Safari</h3>
                 <p class="modal-text">Jihoafrická republika, Botswana nebo Namibie jsou země, kde je safari doma. Velká zvířata jsou vidět v parcích nebo rezervacích. Zde můžeme jezdit buď vlastním (půjčeným) autem nebo parky organizují vyjížďky (ranní, večerní) s místním průvodcem (rangerem). Většina parků má dostatečnou kapacitu a rozsah ubytování (od kempu po chatky). JAR má velkou hustotu parků o různé velikosti (v největším můžete strávit i týden) a dobrou infrastrukturu. Botswana je divočejší, Namibie má málo parků se zvířaty, ale mnoho specifických krajinných scenérií (duny, kaňony).</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://youtu.be/t4MB2DIQevY?feature=shared" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                    <a href="https://youtu.be/SQXEcSoZfFs?is=2W8CCmbqTgE9dCVo" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video 2!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="afrs1.jpg" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="afrs2.jpg" alt="Expedice foto" class="slide" loading="lazy">
@@ -856,10 +876,16 @@
             <div class="modal-body">
                 <h3>Expedice Afrika - Motorky</h3>
                 <p class="modal-text">Pomůžeme s půjčením motorek různých typů i značek. Můžete si užít jak horské asfaltové silničky, tak množství nezpevněných cest v náročných terénech. Doprovodné vozidlo pobere vaše zavazadla i zásoby, takže jedete na lehko. Itinerář připravujeme vždy spolu, k vaší maximální spokojenosti.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://youtu.be/r1n_mCXBQ4M?feature=shared" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                    <a href="https://youtu.be/C5oKHcsCxQU?feature=shared" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video 2!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="moto1.jfif" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="moto2.jfif" alt="Expedice foto" class="slide" loading="lazy">
@@ -877,10 +903,12 @@
             <div class="modal-body">
                 <h3>Expedice Ostrov sv. Tomáše</h3>
                 <p class="modal-text">Málo navštěvovaná destinace bez hotelových resortů a globálních fast-foodů. Dva hlavní ostrovy tvoří nejmenší stát Afriky. Poloha na rovníku určuje tropické klima, s bohatými srážkami, což spolu s vulkanickými půdami dává základ bujné vegetaci. Nepřístupné pohoří (až 2 tis. m) chrání horské pralesy před rozšiřováním kávových a kakaových plantáží dále po ostrově. Velryby, želvy a delfíni jsou zpestřením klidného plážování. Tedy pokud se zrovna nechystáte navštívit některou z restaurací, které umí připravit všechny dary moře asi nejlépe na světě.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="Tom1.jpg" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="Tom3.jpg" alt="Expedice foto" class="slide" loading="lazy">
@@ -898,10 +926,12 @@
             <div class="modal-body">
                 <h3>Expedice Kostarika</h3>
                 <p class="modal-text">Jedna z nejbezpečnějších destinací Latinské Ameriky, kde je ochrana přírody a turistika vyprecizovaná až k dokonalosti. Milovníci přírody i lehké pěší turistiky si přijdou na své. Pralesy různých nadmořských výšek, sopky, množství vodopádů i pobřeží jsou na dosah. Díky malé rozloze státu jsou přejezdy mezi atrakcemi krátké a relativně rychlé.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="kost2.JPG" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="kost3.JPG" alt="Expedice foto" class="slide" loading="lazy">
@@ -919,10 +949,12 @@
             <div class="modal-body">
                 <h3>Expedice Kazachstán</h3>
                 <p class="modal-text">Největší země Střední Asie, kterou nelze procestovat v jedné expedici. Pohoří Altaj sdílí Kazachstán s okolními státy a na jeho straně je přístup do hor asi nejjednodušší. Předhůří, tzv. Rudný Altaj, s vrcholy těsně pod 2tis. m je optimální jak pro náročnější treky, tak i pro toulání divokou přírodou. Zejména v období indiánského léta nebo s prvním sněhem jsou tyto hory nejkrásnější.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://youtu.be/x2TC0VLJO_4?is=4Mx7vyD-R348SGSE" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="kaz2.jpg" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="kaz3.jpeg" alt="Expedice foto" class="slide" loading="lazy">
@@ -940,10 +972,12 @@
             <div class="modal-body">
                 <h3>Expedice Pákistán</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="pak2.jpg" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="pak3.JPG" alt="Expedice foto" class="slide" loading="lazy">
@@ -961,10 +995,12 @@
             <div class="modal-body">
                 <h3>Expedice Indie</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="Ind1.JPG" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="Ind2.JPG" alt="Expedice foto" class="slide" loading="lazy">
@@ -982,10 +1018,12 @@
             <div class="modal-body">
                 <h3>Expedice Čína a Japonsko</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Expedice foto" class="slide" loading="lazy">
@@ -1003,10 +1041,12 @@
             <div class="modal-body">
                 <h3>Expedice Portugalsko</h3>
                 <p class="modal-text">Portugalsko je i není jednoduchá destinace. Vidět více z místního stylu života a kultury vyžaduje určité know-how. Většinou se líbí vyvážený mix: historická města, pobřeží, hory (treky a/nebo kola), vinařské oblasti. Dobré jídlo a pití chce svůj čas, proto na těchto expedicích nikdy nespěcháme.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://youtu.be/p2I4B4JrgZw?feature=shared" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="pt2.JPG" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="pt3.JPG" alt="Expedice foto" class="slide" loading="lazy">
@@ -1024,10 +1064,12 @@
             <div class="modal-body">
                 <h3>Expedice Holandsko</h3>
                 <p class="modal-text">Jaro nebo podzim je dobrá doba na plavbu po kanálech. Jezdíme do Fríska, kde je také mnoho otevřených vodních ploch (jezer) a tak si kromě malebných městeček s větrnými mlýny užijete i pěknou přírodu. Mimo sezonu jsou vodní cesty volnější. Půjčujeme motorové čluny, které jsou plně vybaveny i pro chladnější počasí. Bezpečně odvezou kola, i zásoby.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="hol1.JPG" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="hol2.JPG" alt="Expedice foto" class="slide" loading="lazy">
@@ -1045,10 +1087,12 @@
             <div class="modal-body">
                 <h3>Expedice Kamčatka</h3>
                 <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup nám umožňuje tvořit bezpečné cesty.</p>
-                <a href="#" target="_blank" class="modal-yt-btn">
-                    <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    Klikni a podívej se na video!
-                </a>
+                <div class="yt-buttons">
+                    <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
+                        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                        Klikni a podívej se na video!
+                    </a>
+                </div>
                 <div class="slideshow-container">
                     <img src="kam2.HEIC" alt="Expedice foto" class="slide active" loading="lazy">
                     <img src="kam3.HEIC" alt="Expedice foto" class="slide" loading="lazy">
