@@ -235,25 +235,13 @@
             border-radius: 30px;
             z-index: 10;
             animation: pulse-badge 2s infinite;
-            pointer-events: none; /* Aby neblokoval kliknutí na kartu */
+            pointer-events: none;
         }
 
         @keyframes pulse-badge {
-            0% {
-                background-color: #ff3333;
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
-            }
-            50% {
-                background-color: #ff9900;
-                transform: scale(1.05);
-                box-shadow: 0 0 0 12px rgba(255, 153, 0, 0);
-            }
-            100% {
-                background-color: #ff3333;
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
-            }
+            0% { background-color: #ff3333; transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
+            50% { background-color: #ff9900; transform: scale(1.05); box-shadow: 0 0 0 12px rgba(255, 153, 0, 0); }
+            100% { background-color: #ff3333; transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
         }
 
         .card-content {
@@ -388,6 +376,9 @@
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            /* Custom scrollbar pro celý modal na desktopu */
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-yellow) #f4f4f4;
         }
         .modal-overlay.active .modal-content {
             transform: translateY(0) scale(1);
@@ -410,6 +401,13 @@
             transition: all 0.3s;
             font-weight: 300;
             line-height: 1;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .modal-close:hover {
             color: var(--accent-yellow);
@@ -438,16 +436,38 @@
             height: 3px;
             background: var(--accent-yellow);
         }
+
+        /* Obal pro text v modálu - na desktopu volný, na mobilu scrolluje */
+        .modal-text-container {
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
         .modal-text {
             font-size: 1.15rem;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            margin-top: 20px;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
             font-weight: 500;
+        }
+        
+        /* Animovaná šipka pro naznačení scrollování (na desktopu skrytá) */
+        .scroll-indicator {
+            display: none;
+            color: var(--accent-yellow);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
         }
 
         /* --- Tlačítko YouTube v modálu s pulzováním --- */
@@ -476,7 +496,7 @@
         .modal-yt-btn:hover {
             background-color: var(--accent-dark);
             color: var(--accent-yellow);
-            animation: none; /* Vypne pulzování při najetí */
+            animation: none;
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
@@ -484,18 +504,18 @@
             width: 28px;
             height: 28px;
             fill: currentColor;
+            flex-shrink: 0;
         }
 
-        /* Kontejner pro videa (pokud jich je víc, seřadí se hezky vedle sebe) */
         .yt-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        /* --- SLIDESHOW (Změněno pro perfektní fotky a rychlost načítání) --- */
+        /* --- SLIDESHOW --- */
         .slideshow-container {
             position: relative;
             width: 100%;
@@ -504,15 +524,12 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin: 0 auto;
-            background-color: #f4f4f4; /* Jemné pozadí, fotka bude mít své okraje elegantní */
+            background-color: #f4f4f4;
         }
         .slide {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-           
-            /* KLÍČOVÁ ZMĚNA: fotky se nikdy neoříznou (uřezané hlavy), vždy se zmenší aby byly celé */
             object-fit: contain;
-           
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             z-index: 1;
@@ -522,7 +539,7 @@
             z-index: 2;
         }
 
-        /* Galerie v okně pro dokumenty (certifikáty) */
+        /* Galerie v okně pro dokumenty */
         .cert-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -539,7 +556,7 @@
             border: 1px solid #eeeeee;
         }
 
-        /* --- RESPONSIVNÍ DESIGN --- */
+        /* --- RESPONSIVNÍ DESIGN (ŘEŠENÍ PRO MOBILNÍ TELEFONY) --- */
         @media (max-width: 900px) {
             .hero h1 { font-size: 3.5rem; }
             h2 { font-size: 2.2rem; }
@@ -552,13 +569,72 @@
             .hero h1 { font-size: 2.8rem; letter-spacing: 1px; }
             .hero p { font-size: 1.1rem; padding: 0 10px; }
            
-            .modal-body { padding: 40px 20px; }
-            .slideshow-container { height: 250px; }
+            /* Úpravy Modálu pro mobil - VŠE SE VEJDE NA OBRAZOVKU */
+            .modal-content {
+                max-height: 95vh;
+            }
+            .modal-body { 
+                padding: 35px 15px 20px; /* Zmenšené odsazení */
+            }
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+                width: 35px;
+                height: 35px;
+            }
+            .modal-body h3 { 
+                font-size: 1.35rem; 
+                margin-bottom: 15px;
+            }
+            
+            /* Zde je rolovací box pro text! Zmenšený a s posuvníkem */
+            .modal-text-container {
+                max-height: 140px; /* Omezí výšku textu */
+                overflow-y: auto; /* Zapne rolování prstem */
+                padding-right: 8px;
+                margin-bottom: 5px;
+                margin-top: 10px;
+                text-align: left; /* Na telefonu je lepší zarovnání doleva pro čtení */
+                /* Vlastní styly posuvníku pro webkit */
+                scrollbar-width: thin;
+                scrollbar-color: var(--accent-yellow) #f1f1f1;
+            }
+            .modal-text-container::-webkit-scrollbar { width: 5px; }
+            .modal-text-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+            .modal-text-container::-webkit-scrollbar-thumb { background: var(--accent-yellow); border-radius: 4px; }
+            
+            .modal-text {
+                font-size: 0.9rem !important; /* Mnohem menší text */
+                line-height: 1.4;
+            }
+            
+            .scroll-indicator {
+                display: block; /* Zobrazí animovanou šipku */
+            }
+
+            /* Oprava zalamování textu tlačítek "2!" */
+            .yt-buttons {
+                flex-direction: column; /* Tlačítka bezpečně pod sebou */
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            .modal-yt-btn { 
+                padding: 12px 15px; 
+                font-size: 0.85rem; /* Menší font zabrání zalamování */
+                width: 100%; 
+                white-space: nowrap; /* ZÁKAZ zalamování textu na dva řádky! */
+            }
+            
+            /* Fotka je teď menší, aby byla vidět s nadpisem i tlačítky */
+            .slideshow-container { 
+                height: 220px; 
+            }
+            
             .cert-gallery { grid-template-columns: 1fr; gap: 15px; }
-            .cert-img { height: 400px; }
-            .modal-body h3 { font-size: 2rem; }
-            .modal-yt-btn { padding: 12px 25px; font-size: 1rem; width: 100%; }
+            .cert-img { height: 300px; }
         }
+        
         @media (max-width: 480px) {
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
             .nav-links a { font-size: 0.8rem; }
@@ -566,7 +642,11 @@
             .content-box { padding: 30px 15px; }
             .cards { grid-template-columns: 1fr; }
             .card-img { height: 200px; }
-            .slideshow-container { height: 200px; }
+            
+            /* Ještě menší fonty pro velmi malé telefony */
+            .modal-yt-btn { font-size: 0.8rem; padding: 10px; }
+            .slideshow-container { height: 180px; }
+            .modal-text-container { max-height: 120px; }
         }
     </style>
 </head>
@@ -803,7 +883,9 @@
             <span class="modal-close" onclick="closeModalForce('modal-certifikaty')">&times;</span>
             <div class="modal-body">
                 <h3>Certifikáty</h3>
-                <p class="modal-text">Naše certifikáty o pojištění a zápisu cestovní kanceláře.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Naše certifikáty o pojištění a zápisu cestovní kanceláře.</p>
+                </div>
                 <div class="cert-gallery">
                     <div class="cert-img" style="background-image: url('IMG_0245.webp');"></div>
                     <div class="cert-img" style="background-image: url('IMG_0246.jpeg');"></div>
@@ -821,7 +903,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-1')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Jih Afriky - Hory</h3>
-                <p class="modal-text">Zejména v Jihoafrické republice si milovníci horských túr přijdou na své. Většina atraktivních lokalit má značené turistické cesty a alespoň minimální infrastrukturu, které řeší začátek a konec několikadenních tras. Dračí hory jsou tak rozlehlé, že k jejich objevování budete potřebovat několik návštěv. Další destinace jsou v oblasti Kapska. Jsou i místa pro lezení s lanem nebo bouldering. Několik expedic jsme dělali i pro nadšence horských kol.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Zejména v Jihoafrické republice si milovníci horských túr přijdou na své. Většina atraktivních lokalit má značené turistické cesty a alespoň minimální infrastrukturu, které řeší začátek a konec několikadenních tras. Dračí hory jsou tak rozlehlé, že k jejich objevování budete potřebovat několik návštěv. Další destinace jsou v oblasti Kapska. Jsou i místa pro lezení s lanem nebo bouldering. Několik expedic jsme dělali i pro nadšence horských kol.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://youtu.be/ZMyIYhXQF3U?feature=shared" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -848,7 +933,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-10')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Afrika - Safari</h3>
-                <p class="modal-text">Jihoafrická republika, Botswana nebo Namibie jsou země, kde je safari doma. Velká zvířata jsou vidět v parcích nebo rezervacích. Zde můžeme jezdit buď vlastním (půjčeným) autem nebo parky organizují vyjížďky (ranní, večerní) s místním průvodcem (rangerem). Většina parků má dostatečnou kapacitu a rozsah ubytování (od kempu po chatky). JAR má velkou hustotu parků o různé velikosti (v největším můžete strávit i týden) a dobrou infrastrukturu. Botswana je divočejší, Namibie má málo parků se zvířaty, ale mnoho specifických krajinných scenérií (duny, kaňony).</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Jihoafrická republika, Botswana nebo Namibie jsou země, kde je safari doma. Velká zvířata jsou vidět v parcích nebo rezervacích. Zde můžeme jezdit buď vlastním (půjčeným) autem nebo parky organizují vyjížďky (ranní, večerní) s místním průvodcem (rangerem). Většina parků má dostatečnou kapacitu a rozsah ubytování (od kempu po chatky). JAR má velkou hustotu parků o různé velikosti (v největším můžete strávit i týden) a dobrou infrastrukturu. Botswana je divočejší, Namibie má málo parků se zvířaty, ale mnoho specifických krajinných scenérií (duny, kaňony).</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://youtu.be/t4MB2DIQevY?feature=shared" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -875,7 +963,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-11')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Afrika - Motorky</h3>
-                <p class="modal-text">Pomůžeme s půjčením motorek různých typů i značek. Můžete si užít jak horské asfaltové silničky, tak množství nezpevněných cest v náročných terénech. Doprovodné vozidlo pobere vaše zavazadla i zásoby, takže jedete na lehko. Itinerář připravujeme vždy spolu, k vaší maximální spokojenosti.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Pomůžeme s půjčením motorek různých typů i značek. Můžete si užít jak horské asfaltové silničky, tak množství nezpevněných cest v náročných terénech. Doprovodné vozidlo pobere vaše zavazadla i zásoby, takže jedete na lehko. Itinerář připravujeme vždy spolu, k vaší maximální spokojenosti.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://youtu.be/r1n_mCXBQ4M?feature=shared" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -902,7 +993,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-2')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Ostrov sv. Tomáše</h3>
-                <p class="modal-text">Málo navštěvovaná destinace bez hotelových resortů a globálních fast-foodů. Dva hlavní ostrovy tvoří nejmenší stát Afriky. Poloha na rovníku určuje tropické klima, s bohatými srážkami, což spolu s vulkanickými půdami dává základ bujné vegetaci. Nepřístupné pohoří (až 2 tis. m) chrání horské pralesy před rozšiřováním kávových a kakaových plantáží dále po ostrově. Velryby, želvy a delfíni jsou zpestřením klidného plážování. Tedy pokud se zrovna nechystáte navštívit některou z restaurací, které umí připravit všechny dary moře asi nejlépe na světě.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Málo navštěvovaná destinace bez hotelových resortů a globálních fast-foodů. Dva hlavní ostrovy tvoří nejmenší stát Afriky. Poloha na rovníku určuje tropické klima, s bohatými srážkami, což spolu s vulkanickými půdami dává základ bujné vegetaci. Nepřístupné pohoří (až 2 tis. m) chrání horské pralesy před rozšiřováním kávových a kakaových plantáží dále po ostrově. Velryby, želvy a delfíni jsou zpestřením klidného plážování. Tedy pokud se zrovna nechystáte navštívit některou z restaurací, které umí připravit všechny dary moře asi nejlépe na světě.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -925,7 +1019,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-3')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Kostarika</h3>
-                <p class="modal-text">Jedna z nejbezpečnějších destinací Latinské Ameriky, kde je ochrana přírody a turistika vyprecizovaná až k dokonalosti. Milovníci přírody i lehké pěší turistiky si přijdou na své. Pralesy různých nadmořských výšek, sopky, množství vodopádů i pobřeží jsou na dosah. Díky malé rozloze státu jsou přejezdy mezi atrakcemi krátké a relativně rychlé.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Jedna z nejbezpečnějších destinací Latinské Ameriky, kde je ochrana přírody a turistika vyprecizovaná až k dokonalosti. Milovníci přírody i lehké pěší turistiky si přijdou na své. Pralesy různých nadmořských výšek, sopky, množství vodopádů i pobřeží jsou na dosah. Díky malé rozloze státu jsou přejezdy mezi atrakcemi krátké a relativně rychlé.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -948,7 +1045,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-4')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Kazachstán</h3>
-                <p class="modal-text">Největší země Střední Asie, kterou nelze procestovat v jedné expedici. Pohoří Altaj sdílí Kazachstán s okolními státy a na jeho straně je přístup do hor asi nejjednodušší. Předhůří, tzv. Rudný Altaj, s vrcholy těsně pod 2tis. m je optimální jak pro náročnější treky, tak i pro toulání divokou přírodou. Zejména v období indiánského léta nebo s prvním sněhem jsou tyto hory nejkrásnější.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Největší země Střední Asie, kterou nelze procestovat v jedné expedici. Pohoří Altaj sdílí Kazachstán s okolními státy a na jeho straně je přístup do hor asi nejjednodušší. Předhůří, tzv. Rudný Altaj, s vrcholy těsně pod 2tis. m je optimální jak pro náročnější treky, tak i pro toulání divokou přírodou. Zejména v období indiánského léta nebo s prvním sněhem jsou tyto hory nejkrásnější.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://youtu.be/x2TC0VLJO_4?is=4Mx7vyD-R348SGSE" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -971,7 +1071,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-5')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Pákistán</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -994,7 +1097,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-6')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Indie</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -1017,7 +1123,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-7')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Čína a Japonsko</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností, které testují vaše limity a odměňují nezapomenutelnými výhledy. Špičková organizace a autentický zážitek.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -1040,7 +1149,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-8')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Portugalsko</h3>
-                <p class="modal-text">Portugalsko je i není jednoduchá destinace. Vidět více z místního stylu života a kultury vyžaduje určité know-how. Většinou se líbí vyvážený mix: historická města, pobřeží, hory (treky a/nebo kola), vinařské oblasti. Dobré jídlo a pití chce svůj čas, proto na těchto expedicích nikdy nespěcháme.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Portugalsko je i není jednoduchá destinace. Vidět více z místního stylu života a kultury vyžaduje určité know-how. Většinou se líbí vyvážený mix: historická města, pobřeží, hory (treky a/nebo kola), vinařské oblasti. Dobré jídlo a pití chce svůj čas, proto na těchto expedicích nikdy nespěcháme.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://youtu.be/p2I4B4JrgZw?feature=shared" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -1063,7 +1175,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-9')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Holandsko</h3>
-                <p class="modal-text">Jaro nebo podzim je dobrá doba na plavbu po kanálech. Jezdíme do Fríska, kde je také mnoho otevřených vodních ploch (jezer) a tak si kromě malebných městeček s větrnými mlýny užijete i pěknou přírodu. Mimo sezonu jsou vodní cesty volnější. Půjčujeme motorové čluny, které jsou plně vybaveny i pro chladnější počasí. Bezpečně odvezou kola, i zásoby.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Jaro nebo podzim je dobrá doba na plavbu po kanálech. Jezdíme do Fríska, kde je také mnoho otevřených vodních ploch (jezer) a tak si kromě malebných městeček s větrnými mlýny užijete i pěknou přírodu. Mimo sezonu jsou vodní cesty volnější. Půjčujeme motorové čluny, které jsou plně vybaveny i pro chladnější počasí. Bezpečně odvezou kola, i zásoby.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -1086,7 +1201,10 @@
             <span class="modal-close" onclick="closeModalForce('modal-12')">&times;</span>
             <div class="modal-body">
                 <h3>Expedice Kamčatka</h3>
-                <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup nám umožňuje tvořit bezpečné cesty.</p>
+                <div class="modal-text-container">
+                    <p class="modal-text">Máme za sebou několik expedic s horskými koly, trasy různých náročností uprostřed syrové a nedotčené přírody. Profesionální přístup nám umožňuje tvořit bezpečné cesty.</p>
+                </div>
+                <div class="scroll-indicator">▼ rolovat ▼</div>
                 <div class="yt-buttons">
                     <a href="https://www.youtube.com/" target="_blank" class="modal-yt-btn">
                         <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
@@ -1107,6 +1225,18 @@
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Ošetření indikátoru scrollování podle délky obsahu textu
+            const textContainer = document.querySelector(`#${modalId} .modal-text-container`);
+            const scrollIndicator = document.querySelector(`#${modalId} .scroll-indicator`);
+            if (textContainer && scrollIndicator) {
+                // Pokud text není delší než kontejner, skryje animovanou šipku
+                if (textContainer.scrollHeight <= textContainer.clientHeight) {
+                    scrollIndicator.style.display = 'none';
+                } else {
+                    scrollIndicator.style.display = 'block';
+                }
+            }
         }
         function closeModal(event, modalId) {
             if (event.target.id === modalId) {
@@ -1138,9 +1268,25 @@
             });
         }
 
+        // Skrytí šipky při potažení textu
+        function setupScrollIndicators() {
+            const textContainers = document.querySelectorAll('.modal-text-container');
+            textContainers.forEach(container => {
+                container.addEventListener('scroll', function() {
+                    const indicator = this.nextElementSibling;
+                    if (indicator && indicator.classList.contains('scroll-indicator')) {
+                        // Skryje indikátor jakmile začneš scrollovat
+                        indicator.style.opacity = '0';
+                        indicator.style.transition = 'opacity 0.3s ease';
+                        setTimeout(() => indicator.style.display = 'none', 300);
+                    }
+                });
+            });
+        }
+
         // Spustí se po načtení stránky
         document.addEventListener("DOMContentLoaded", function() {
-            // Míchání karet expedic - zajistí náhodné pořadí při každém načtení stránky
+            // Míchání karet expedic
             const cardsContainer = document.getElementById('expedice-karty');
             const cards = Array.from(cardsContainer.children);
            
@@ -1150,8 +1296,8 @@
             }
             cards.forEach(card => cardsContainer.appendChild(card));
 
-            // Spuštění slideshow fotek v modálních oknech
             initSlideshows();
+            setupScrollIndicators();
         });
     </script>
 </body>
